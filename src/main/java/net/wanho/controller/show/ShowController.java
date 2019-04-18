@@ -3,12 +3,15 @@ package net.wanho.controller.show;
 
 import com.github.pagehelper.PageInfo;
 import net.wanho.pojo.Product;
+import net.wanho.pojo.vo.ProductCategoryVO;
+import net.wanho.service.product.ProductCategoryService;
 import net.wanho.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/show")
@@ -18,6 +21,8 @@ public class ShowController {
     ProductService productService;
 
 
+    @Autowired
+    ProductCategoryService productCategoryService;
 
     @RequestMapping("/Temp")
     public String temp(HttpSession session)
@@ -28,6 +33,10 @@ public class ShowController {
     @RequestMapping("/Index")
     public String showindex(HttpSession session)
     {
+        List<ProductCategoryVO> pclist = productCategoryService.getDomList();
+
+
+        session.setAttribute("pclist",pclist);
         PageInfo<Product> productPageInfo = productService.selectProductbyEntity(0, 6, 1);
         PageInfo<Product> productPageInfo1 =productService.selectProductbyEntity(1,6,1);
         PageInfo<Product> productPageInfo2 =productService.selectProductbyEntity(2,6,1);
