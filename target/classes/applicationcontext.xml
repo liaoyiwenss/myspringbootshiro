@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+
+
+
+    <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager" />
+    <tx:advice id="advice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="insert*" isolation="READ_COMMITTED"
+                       read-only="false" propagation="REQUIRED" timeout="-1" />
+            <tx:method name="add*" isolation="READ_COMMITTED"
+                       read-only="false" propagation="REQUIRED" timeout="-1" />
+            <tx:method name="update*" isolation="READ_COMMITTED"
+                       read-only="false" propagation="REQUIRED" timeout="-1" />
+            <tx:method name="set*" isolation="READ_COMMITTED"
+                       read-only="false" propagation="REQUIRED" timeout="-1" />
+            <tx:method name="delete*" isolation="READ_COMMITTED"
+                       read-only="false" propagation="REQUIRED" timeout="-1" />
+            <tx:method name="select*" isolation="READ_COMMITTED"
+                       read-only="true" propagation="SUPPORTS" timeout="-1" />
+            <tx:method name="get*" isolation="READ_COMMITTED"
+                       read-only="true" propagation="SUPPORTS" timeout="-1" />
+            <tx:method name="query*" isolation="READ_COMMITTED"
+                       read-only="true" propagation="SUPPORTS" timeout="-1" />
+        </tx:attributes>
+    </tx:advice>
+    
+    
+    <aop:config>
+        <aop:pointcut id="mypointcut" expression="execution(* net.wanho.service..*.*(..))"/>
+        <aop:advisor advice-ref="advice" pointcut-ref="mypointcut"/>
+    </aop:config>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource">
+        </property>
+        <property name="configLocation" value="classpath:mybatisconfig.xml">
+        </property>
+        <property name="typeAliasesPackage">
+            <value>net.wanho.pojo</value>
+        </property>
+        <property name="mapperLocations">
+            <value>classpath:net/wanho/mapper/*.xml</value>
+        </property>
+    </bean>
+    <!--<context:component-scan base-package="com.mmweb.dao" />-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="net.wanho.mapper" />
+    </bean>
+  <!--  &lt;!&ndash;配置一个taskbean &ndash;&gt;
+    <bean id="helloTask" class="net.wanho.task.HelloTask"></bean>
+    &lt;!&ndash;配置具体需要执行的task&ndash;&gt;
+    <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="helloTask"/>
+        <property name="targetMethod" value="sayHello"/>
+        <property name="concurrent" value="false"/>
+        &lt;!&ndash;是否支持多线程执行&ndash;&gt;
+    </bean>
+    &lt;!&ndash;trigger &ndash;&gt;
+    <bean id="triggerer" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="jobDetail"></property>
+        &lt;!&ndash;秒 分 时 日期 月 星期 年 &ndash;&gt;
+        <property name="cronExpression" value="1/2 * * * * ? *"></property>
+    </bean>
+
+    &lt;!&ndash; 用来执行加了出发规则的方法&ndash;&gt;
+    <bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="triggerer"></ref>
+            </list>
+        </property>
+    </bean>-->
+
+    <context:component-scan base-package="net.wanho.service,net.wanho.mapper"></context:component-scan>
+
+</beans>
