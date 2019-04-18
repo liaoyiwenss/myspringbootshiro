@@ -2,9 +2,9 @@ package net.wanho.pojo;
 
 import net.wanho.pojo.base.BaseEntity;
 
-import java.util.Date;
+import java.io.Serializable;
 
-public class Useraddress extends BaseEntity {
+public class Useraddress extends BaseEntity implements Serializable {
     private Long userid;
 
     private String address;

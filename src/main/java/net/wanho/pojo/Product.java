@@ -2,7 +2,9 @@ package net.wanho.pojo;
 
 import net.wanho.pojo.base.BaseEntity;
 
-public class Product extends BaseEntity {
+import java.io.Serializable;
+
+public class Product extends BaseEntity implements Serializable {
     private String name;
 
     private String description;

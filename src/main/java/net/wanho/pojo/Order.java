@@ -2,9 +2,9 @@ package net.wanho.pojo;
 
 import net.wanho.pojo.base.BaseEntity;
 
-import java.util.Date;
+import java.io.Serializable;
 
-public class Order extends BaseEntity {
+public class Order extends BaseEntity implements Serializable {
 
     private Integer userid;
 

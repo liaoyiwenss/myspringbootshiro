@@ -2,9 +2,9 @@ package net.wanho.pojo;
 
 import net.wanho.pojo.base.BaseEntity;
 
-import java.util.Date;
+import java.io.Serializable;
 
-public class User extends BaseEntity {
+public class User extends BaseEntity implements Serializable {
     private String loginname;
 
     private String username;

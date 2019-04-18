@@ -2,7 +2,9 @@ package net.wanho.pojo.vo;
 
 import net.wanho.pojo.Product;
 
-public class ShoppingCartItem {
+import java.io.Serializable;
+
+public class ShoppingCartItem implements Serializable {
 
 	private    Product   product;
     private     int    quantity;

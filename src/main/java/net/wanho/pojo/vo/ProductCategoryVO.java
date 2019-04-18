@@ -2,10 +2,11 @@ package net.wanho.pojo.vo;
 
 import net.wanho.pojo.Productcategory;
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public class ProductCategoryVO {
+public class ProductCategoryVO implements Serializable {
 
 	private Productcategory pc;//分类
     private     List<ProductCategoryVO >   pcVOList;//子集分类的VO列表

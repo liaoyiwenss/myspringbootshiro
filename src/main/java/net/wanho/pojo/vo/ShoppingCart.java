@@ -1,9 +1,10 @@
 package net.wanho.pojo.vo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShoppingCart {
+public class ShoppingCart implements Serializable {
 
 	private   List<ShoppingCartItem>  items=new  ArrayList<ShoppingCartItem>();
 	private   double   sum;

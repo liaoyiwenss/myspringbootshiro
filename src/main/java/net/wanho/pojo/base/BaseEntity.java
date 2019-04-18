@@ -1,8 +1,9 @@
 package net.wanho.pojo.base;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class BaseEntity {
+public class BaseEntity implements Serializable {
      Long tid;
 
      Date createtime;
