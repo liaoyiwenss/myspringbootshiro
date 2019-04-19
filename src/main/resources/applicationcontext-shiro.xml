@@ -52,22 +52,23 @@
     <bean id="shirofilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="secuityManager"/>
         <property name="loginUrl" value="/show/Login"/>
+        <property name="unauthorizedUrl" value="/error/exception.jsp"/>
         <property name="filterChainDefinitions">
             <value>
                 <!--匿名访问-->
-                /js/**=anon
+                <!--/js/**=anon
                 /images/**=anon
                 /css/**=anon
                 /files/**=anon
                 /guess/**=anon
-                <!--登陆可用-->
+                &lt;!&ndash;登陆可用&ndash;&gt;
                 /show/Index=authc
-                <!--有没有管理员角色-->
+                &lt;!&ndash;有没有管理员角色&ndash;&gt;
                 /admin/**=roles["admin"]
-                <!--指定权限-->
+                &lt;!&ndash;指定权限&ndash;&gt;
                 /order/**=perms["order:*"]
-                <!--必须存在用户,登陆操作不检查-->
-                /**=user
+                &lt;!&ndash;必须存在用户,登陆操作不检查&ndash;&gt;
+                /**=user-->
             </value>
         </property>
     </bean>

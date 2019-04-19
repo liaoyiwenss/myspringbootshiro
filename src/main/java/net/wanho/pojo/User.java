@@ -21,6 +21,17 @@ public class User extends BaseEntity implements Serializable {
 
     private Integer type;
 
+    private String salt;
+
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
     public String getLoginname() {
         return loginname;
     }

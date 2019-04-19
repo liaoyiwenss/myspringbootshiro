@@ -33,12 +33,12 @@
     insert into user ( createtime, logicaldelete,
       modifytime, loginname, username, 
       password, sex, identitycode, 
-      email, mobile, type
+      email, mobile, type,salt
       )
     values ( now(), 0,
       #{modifytime,jdbcType=TIMESTAMP}, #{loginname,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{identitycode,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}
+      #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER},#{salt,javaType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="net.wanho.pojo.User" >
@@ -80,6 +80,9 @@
       <if test="type != null" >
         type,
       </if>
+      <if test="salt != null" >
+        salt,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="tid != null" >
@@ -117,6 +120,9 @@
       </if>
       <if test="type != null" >
         #{type,jdbcType=INTEGER},
+      </if>
+      <if test="salt !=null" >
+        #{salt,javaType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -167,7 +173,8 @@
       identitycode = #{identitycode,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       mobile = #{mobile,jdbcType=VARCHAR},
-      type = #{type,jdbcType=INTEGER}
+      type = #{type,jdbcType=INTEGER},
+      sale
     where tid = #{tid,jdbcType=BIGINT}
   </update>
 </mapper>

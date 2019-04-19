@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--trans-->
+
+    <tx:annotation-driven transaction-manager="transactionManager" />
+    <tx:advice id="advice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="insert*" isolation="READ_COMMITTED"
+                       read-only="false" propagation="REQUIRED" timeout="-1" />
+            <tx:method name="add*" isolation="READ_COMMITTED"
+                       read-only="false" propagation="REQUIRED" timeout="-1" />
+            <tx:method name="update*" isolation="READ_COMMITTED"
+                       read-only="false" propagation="REQUIRED" timeout="-1" />
+            <tx:method name="set*" isolation="READ_COMMITTED"
+                       read-only="false" propagation="REQUIRED" timeout="-1" />
+            <tx:method name="delete*" isolation="READ_COMMITTED"
+                       read-only="false" propagation="REQUIRED" timeout="-1" />
+            <tx:method name="select*" isolation="READ_COMMITTED"
+                       read-only="true" propagation="SUPPORTS" timeout="-1" />
+            <tx:method name="get*" isolation="READ_COMMITTED"
+                       read-only="true" propagation="SUPPORTS" timeout="-1" />
+            <tx:method name="query*" isolation="READ_COMMITTED"
+                       read-only="true" propagation="SUPPORTS" timeout="-1" />
+        </tx:attributes>
+    </tx:advice>
+    
+    
+    <aop:config>
+        <aop:pointcut id="mypointcut" expression="execution(* net.wanho.service..*.*(..))"/>
+        <aop:advisor advice-ref="advice" pointcut-ref="mypointcut"/>
+    </aop:config>
+
+
+
+</beans>

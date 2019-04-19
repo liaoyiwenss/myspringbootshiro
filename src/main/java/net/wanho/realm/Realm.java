@@ -10,6 +10,9 @@ import org.apache.shiro.subject.PrincipalCollection;
 public class Realm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+
+
+
         return null;
     }
 

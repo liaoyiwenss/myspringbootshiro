@@ -16,9 +16,8 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping("/login")
+    @RequestMapping("/tologin")
     public String tologin(){
-
         return "login";
     }
     @RequestMapping("/selectalluser")
@@ -29,4 +28,6 @@ public class UserController {
         session.setAttribute("currentuser",currentuser);
         return "index";
     }
+
+
 }
