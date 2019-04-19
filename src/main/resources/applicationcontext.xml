@@ -7,6 +7,7 @@
 
 
 
+    <!--dao-->
 
 
     <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
@@ -20,6 +21,26 @@
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"></property>
     </bean>
+
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource">
+        </property>
+        <property name="configLocation" value="classpath:mybatisconfig.xml">
+        </property>
+        <property name="typeAliasesPackage">
+            <value>net.wanho.pojo</value>
+        </property>
+        <property name="mapperLocations">
+            <value>classpath:net/wanho/mapper/*.xml</value>
+        </property>
+    </bean>
+    <!--<context:component-scan base-package="com.mmweb.dao" />-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="net.wanho.mapper" />
+    </bean>
+
+    <!--trans-->
 
     <tx:annotation-driven transaction-manager="transactionManager" />
     <tx:advice id="advice" transaction-manager="transactionManager">
@@ -49,22 +70,7 @@
         <aop:advisor advice-ref="advice" pointcut-ref="mypointcut"/>
     </aop:config>
 
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource">
-        </property>
-        <property name="configLocation" value="classpath:mybatisconfig.xml">
-        </property>
-        <property name="typeAliasesPackage">
-            <value>net.wanho.pojo</value>
-        </property>
-        <property name="mapperLocations">
-            <value>classpath:net/wanho/mapper/*.xml</value>
-        </property>
-    </bean>
-    <!--<context:component-scan base-package="com.mmweb.dao" />-->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="net.wanho.mapper" />
-    </bean>
+
   <!--  &lt;!&ndash;配置一个taskbean &ndash;&gt;
     <bean id="helloTask" class="net.wanho.task.HelloTask"></bean>
     &lt;!&ndash;配置具体需要执行的task&ndash;&gt;
@@ -89,6 +95,10 @@
             </list>
         </property>
     </bean>-->
+
+
+
+    <!--service-->
 
     <context:component-scan base-package="net.wanho.service,net.wanho.mapper"></context:component-scan>
 

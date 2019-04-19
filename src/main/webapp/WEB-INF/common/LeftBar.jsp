@@ -28,23 +28,23 @@
                   
     				 <li >
                     	<div class="fj">
-                        	<span class="n_img"><span></span><img src="${pageContext.request.contextPath}/page/images/nav1.png" /></span>
-    							<a href="${pageContext.request.contextPath}/servlet/QueryproductList?productid=${list.pc.id}"> <span class="fl">${list.pc.name}</span></a>
+                        	<span class="n_img"><span></span><img src="${pageContext.request.contextPath}/images/nav1.png" /></span>
+    							<a href="${pageContext.request.contextPath}/servlet/QueryproductList?productid=${list.pc.tid}"> <span class="fl">${list.pc.name}</span></a>
     					</div>		
     					<div class="zj">
                             <div class="zj_l">
                                 <c:forEach items="${list.pcVOList}" var="list1" varStatus="i">
                                 <div class="zj_l_c">
-                                 <h2><a href="${pageContext.request.contextPath}/servlet/QueryproductList?productid=${list1.pc.id}">${list1.pc.name}</a></h2>
+                                 <h2><a href="${pageContext.request.contextPath}/servlet/QueryproductList?productid=${list1.pc.tid}">${list1.pc.name}</a></h2>
                                   <c:forEach items="${list1.pcVOList}" var="list2" varStatus="i">
-                                  <a href="${pageContext.request.contextPath}/servlet/QueryproductList?productid=${list2.pc.id}">${list2.pc.name}</a>
+                                  <a href="${pageContext.request.contextPath}/servlet/QueryproductList?productid=${list2.pc.tid}">${list2.pc.name}</a>
                                  </c:forEach>
                                 </div>
                                 </c:forEach>
                             </div>
                             <div class="zj_r">
-                                <a href="#"><img src="${pageContext.request.contextPath}/page/images/n_img1.jpg" width="236" height="200" /></a>
-                                <a href="#"><img src="${pageContext.request.contextPath}/page/images/n_img2.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img1.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="${pageContext.request.contextPath}/images/n_img2.jpg" width="236" height="200" /></a>
                             </div>
                         </div>
                     </li>
@@ -59,7 +59,7 @@
         <ul class="menu_r">
         <li><a href="${pageContext.request.contextPath}">首页</a></li>
         <c:forEach items="${pclist}" var="list" varStatus="i">
-        <li style='<c:if test="${fn:length(list.pc.name)>5}">width:100px</c:if>'><a  style='<c:if test="${fn:length(list.pc.name)>5}">width:100px</c:if>' href="${pageContext.request.contextPath}/servlet/QueryproductList?productid=${list.pc.id}">${list.pc.name}</a>
+        <li style='<c:if test="${fn:length(list.pc.name)>5}">width:100px</c:if>'><a  style='<c:if test="${fn:length(list.pc.name)>5}">width:100px</c:if>' href="${pageContext.request.contextPath}/servlet/QueryproductList?productid=${list.pc.tid}">${list.pc.name}</a>
 				</li>
         </c:forEach>
 			</ul>
