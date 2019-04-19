@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <!--凭证匹配器,加密-->
+    <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+        <property name="hashAlgorithmName" value="md5"></property>
+        <property name="hashIterations" value="2"></property>
+    </bean>
+
+    <bean id="myrealm" class="net.wanho.realm.Realm">
+        <property name="cachingEnabled" value="true"></property>
+        <property name="credentialsMatcher" ref="credentialsMatcher"></property>
+    </bean>
+
+    <!--<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"></bean>-->
+
+    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/>
+        <!--找一下-->
+    </bean>
+
+    <bean id="cookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg value="ShiroRemember"/>
+        <property name="maxAge" value="432000"/>
+    </bean>
+
+
+    <bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+        <!--cookie过期时间-->
+        <property name="cookie" ref="cookie"></property>
+    </bean>
+
+
+
+    <!--安全管理器-->
+    <bean id="secuityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="myrealm"></property>
+        <!--缓存管理器-->
+        <property name="cacheManager" ref="cacheManager"></property>
+        <!---->
+        <property name="rememberMeManager" ref="rememberMeManager"></property>
+    </bean>
+
+    <bean id="securityUtils" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="staticMethod" value="org.apache.shiro.SecurityUtils.setSecurityManager"></property>
+        <property name="arguments" ref="secuityManager"/>
+    </bean>
+
+    <bean id="shirofilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="secuityManager"/>
+        <property name="loginUrl" value="/show/Login"/>
+        <property name="filterChainDefinitions">
+            <value>
+                <!--匿名访问-->
+                /js/**=anon
+                /images/**=anon
+                /css/**=anon
+                /files/**=anon
+                /guess/**=anon
+                <!--登陆可用-->
+                /show/Index=authc
+                <!--有没有管理员角色-->
+                /admin/**=roles["admin"]
+                <!--指定权限-->
+                /order/**=perms["order:*"]
+                <!--必须存在用户,登陆操作不检查-->
+                /**=user
+            </value>
+        </property>
+    </bean>
+    <!--启用权限注解-->
+    <aop:config proxy-target-class="true"/>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="secuityManager"/>
+    </bean>
+</beans>
