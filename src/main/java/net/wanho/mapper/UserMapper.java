@@ -1,9 +1,17 @@
 package net.wanho.mapper;
 
-import net.wanho.mapper.base.BaseMapper;
 import net.wanho.pojo.User;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface UserMapper extends BaseMapper<User> {
+public interface UserMapper {
+    int deleteByPrimaryKey(Long tid);
+
+    int insert(User record);
+
+    int insertSelective(User record);
+
+    User selectByPrimaryKey(Long tid);
+
+    int updateByPrimaryKeySelective(User record);
+
+    int updateByPrimaryKey(User record);
 }

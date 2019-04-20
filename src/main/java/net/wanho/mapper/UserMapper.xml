@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="net.wanho.pojo.User" >
     <id column="tid" property="tid" jdbcType="BIGINT" />
     <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
-    <result column="logicaldelete" property="logicaldelete" jdbcType="TIMESTAMP" />
+    <result column="logicaldelete" property="logicaldelete" jdbcType="BIGINT" />
     <result column="modifytime" property="modifytime" jdbcType="TIMESTAMP" />
     <result column="loginname" property="loginname" jdbcType="VARCHAR" />
     <result column="username" property="username" jdbcType="VARCHAR" />
@@ -14,10 +14,11 @@
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="mobile" property="mobile" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="salt" property="salt" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     tid, createtime, logicaldelete, modifytime, loginname, username, password, sex, identitycode, 
-    email, mobile, type
+    email, mobile, type, salt
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -30,16 +31,16 @@
     where tid = #{tid,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="net.wanho.pojo.User" >
-    insert into user ( createtime, logicaldelete,
+    insert into user (tid, createtime, logicaldelete, 
       modifytime, loginname, username, 
       password, sex, identitycode, 
-      email, mobile, type,salt
-      )
-    values ( now(), 0,
+      email, mobile, type, 
+      salt)
+    values (#{tid,jdbcType=BIGINT}, #{createtime,jdbcType=TIMESTAMP}, #{logicaldelete,jdbcType=BIGINT}, 
       #{modifytime,jdbcType=TIMESTAMP}, #{loginname,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{identitycode,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER},#{salt,javaType=VARCHAR}
-      )
+      #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{salt,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="net.wanho.pojo.User" >
     insert into user
@@ -92,7 +93,7 @@
         #{createtime,jdbcType=TIMESTAMP},
       </if>
       <if test="logicaldelete != null" >
-        #{logicaldelete,jdbcType=TIMESTAMP},
+        #{logicaldelete,jdbcType=BIGINT},
       </if>
       <if test="modifytime != null" >
         #{modifytime,jdbcType=TIMESTAMP},
@@ -121,19 +122,22 @@
       <if test="type != null" >
         #{type,jdbcType=INTEGER},
       </if>
-      <if test="salt !=null" >
-        #{salt,javaType=VARCHAR},
+      <if test="salt != null" >
+        #{salt,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="net.wanho.pojo.User" >
     update user
     <set >
-      <if test="modifytime == 1" >
-        modifytime = now(),
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
       </if>
       <if test="logicaldelete != null" >
-        logicaldelete = #{logicaldelete,jdbcType=TIMESTAMP},
+        logicaldelete = #{logicaldelete,jdbcType=BIGINT},
+      </if>
+      <if test="modifytime != null" >
+        modifytime = #{modifytime,jdbcType=TIMESTAMP},
       </if>
       <if test="loginname != null" >
         loginname = #{loginname,jdbcType=VARCHAR},
@@ -159,13 +163,17 @@
       <if test="type != null" >
         type = #{type,jdbcType=INTEGER},
       </if>
+      <if test="salt != null" >
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
     </set>
     where tid = #{tid,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="net.wanho.pojo.User" >
     update user
-    set  modifytime = now(),
-      logicaldelete = #{logicaldelete,jdbcType=TIMESTAMP},
+    set createtime = #{createtime,jdbcType=TIMESTAMP},
+      logicaldelete = #{logicaldelete,jdbcType=BIGINT},
+      modifytime = #{modifytime,jdbcType=TIMESTAMP},
       loginname = #{loginname,jdbcType=VARCHAR},
       username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
@@ -174,7 +182,7 @@
       email = #{email,jdbcType=VARCHAR},
       mobile = #{mobile,jdbcType=VARCHAR},
       type = #{type,jdbcType=INTEGER},
-      sale
+      salt = #{salt,jdbcType=VARCHAR}
     where tid = #{tid,jdbcType=BIGINT}
   </update>
 </mapper>

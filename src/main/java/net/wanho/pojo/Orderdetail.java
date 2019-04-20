@@ -1,11 +1,15 @@
 package net.wanho.pojo;
 
-import net.wanho.pojo.base.BaseEntity;
+import java.util.Date;
 
-import java.io.Serializable;
+public class Orderdetail {
+    private Long tid;
 
-public class Orderdetail extends BaseEntity implements Serializable {
+    private Date createtime;
 
+    private Long logicaldelete;
+
+    private Date modifytime;
 
     private Long orderid;
 
@@ -14,6 +18,38 @@ public class Orderdetail extends BaseEntity implements Serializable {
     private Integer quantity;
 
     private Float cost;
+
+    public Long getTid() {
+        return tid;
+    }
+
+    public void setTid(Long tid) {
+        this.tid = tid;
+    }
+
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
+    }
+
+    public Long getLogicaldelete() {
+        return logicaldelete;
+    }
+
+    public void setLogicaldelete(Long logicaldelete) {
+        this.logicaldelete = logicaldelete;
+    }
+
+    public Date getModifytime() {
+        return modifytime;
+    }
+
+    public void setModifytime(Date modifytime) {
+        this.modifytime = modifytime;
+    }
 
     public Long getOrderid() {
         return orderid;
