@@ -3,36 +3,36 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
-	<link type="text/css" rel="stylesheet" href="css/regist.css" />
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/regist.css" />
     <!--[if IE 6]>
-    <script src="js/iepng.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/iepng.js" type="text/javascript"></script>
         <script type="text/javascript">
            EvPNG.fix('div, ul, img, li, input, a'); 
         </script>
     <![endif]-->    
-    <script type="text/javascript" src="js/jquery-1.11.1.min_044d0927.js"></script>
-	<script type="text/javascript" src="js/jquery.bxslider_e88acd1b.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.min_044d0927.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.bxslider_e88acd1b.js"></script>
     
-    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="js/menu.js"></script>    
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/menu.js"></script>
         
-	<script type="text/javascript" src="js/select.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/select.js"></script>
     
-	<script type="text/javascript" src="js/lrscroll.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/lrscroll.js"></script>
     
-    <script type="text/javascript" src="js/iban.js"></script>
-    <script type="text/javascript" src="js/fban.js"></script>
-    <script type="text/javascript" src="js/f_ban.js"></script>
-    <script type="text/javascript" src="js/mban.js"></script>
-    <script type="text/javascript" src="js/bban.js"></script>
-    <script type="text/javascript" src="js/hban.js"></script>
-    <script type="text/javascript" src="js/tban.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/iban.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/fban.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/f_ban.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/mban.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/bban.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/hban.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/tban.js"></script>
     
-	<script type="text/javascript" src="js/lrscroll_1.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/lrscroll_1.js"></script>
     
     
-<title>尤洪</title>
+<title>liaoyiwen</title>
 </head>
 <body>  
 <!--Begin Header Begin-->
@@ -42,10 +42,10 @@
 <!--Begin Login Begin-->
 <div class="log_bg">	
     <div class="top">
-        <div class="logo"><a href="Index.html"><img src="images/logo.png" /></a></div>
+        <div class="logo"><a href="Index.html"><img src="${pageContext.request.contextPath}/images/logo.png" /></a></div>
     </div>
 	<div class="regist">
-    	<div class="log_img"><img src="images/l_img.png" width="611" height="425" /></div>
+    	<div class="log_img"><img src="${pageContext.request.contextPath}/images/l_img.png" width="611" height="425" /></div>
 		<div class="reg_c">
         	<form action="${pageContext.request.contextPath}/servlet/Register">
             <table border="0" style="width:420px; font-size:14px; margin-top:20px;" cellspacing="0" cellpadding="0">
@@ -94,7 +94,7 @@
                 <td >
                     <input type="text" name="kaptcha" value="" class="l_ipt" />
                     <a href="javascript:reloadCode();" style="font-size:12px; font-family:'宋体';">换一张</a>
-                    <a href="javascript:reloadCode();"><img style="position:relative; bottom:-20px;" src="kaptcha.jpg" id="kaptchaImage" /></a>
+                    <a href="javascript:reloadCode();"><img style="position:relative; bottom:-20px;" src="/kaptcha.jpg" id="kaptchaImage" /></a>
                 </td>
               </tr>
               <tr>
@@ -126,10 +126,12 @@ var path="${pageContext.request.contextPath}";
   <script type="text/javascript">
 	function reloadCode() {
 		var time = new Date().getTime();
-		document.getElementById("kaptchaImage").src = "kaptcha.jpg?" + time;
+		document.getElementById("kaptchaImage").src = "/kaptcha?d="+time;
 	}
+
+
 </script>
- <script type="text/javascript" src="js/Regist.js"></script>
+ <script type="text/javascript" src="${pageContext.request.contextPath}/js/Regist.js"></script>
 </body>
 
 

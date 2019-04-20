@@ -23,7 +23,7 @@
      
     <script type="text/javascript" src="js/s_ban.js"></script>
     
-<title>尤洪</title>
+<title>liaoyiwen</title>
 </head>
 <body>  
 <!--Begin Header Begin-->

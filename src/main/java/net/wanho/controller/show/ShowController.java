@@ -76,7 +76,11 @@ public class ShowController {
     @RequestMapping("Login")
     public String Login()
     {
-
         return "Login";
+    }
+
+    @RequestMapping("Regist")
+    public String Regist(){
+        return "Regist";
     }
 }

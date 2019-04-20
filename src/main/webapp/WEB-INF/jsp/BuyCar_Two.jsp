@@ -24,7 +24,7 @@
     
     <script type="text/javascript" src="js/shade.js"></script>
     
-<title>尤洪</title>
+<title>liaoyiwen</title>
 </head>
 <body>  
 <!--Begin Header Begin-->

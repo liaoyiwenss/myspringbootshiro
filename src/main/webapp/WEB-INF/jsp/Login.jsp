@@ -31,7 +31,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/lrscroll_1.js"></script>
     
     
-<title>尤洪</title>
+<title>liaoyiwen</title>
 </head>
 <body>  
 <!--Begin Header Begin-->
@@ -85,7 +85,7 @@
 <!--Begin Footer Begin-->
 <div class="btmbg">
     <div class="btm">
-        备案/许可证编号：蜀ICP备12009302号-1-www.dingguagua.com   Copyright © 2015-2018 尤洪商城网 All Rights Reserved. 复制必究 , Technical Support: Dgg Group <br />
+        备案/许可证编号：蜀ICP备12009302号-1-www.dingguagua.com   Copyright © 2015-2018 liaoyiwen商城网 All Rights Reserved. 复制必究 , Technical Support: Dgg Group <br />
         <img src="${pageContext.request.contextPath}/images/b_1.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_2.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_3.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_4.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_5.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_6.gif" width="98" height="33" />
     </div>    	
 </div>

@@ -9,7 +9,7 @@
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">td><h2>天天低价</h2>天天低价 畅选无忧</td>
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3"><h2>天天低价</h2>天天低价 畅选无忧</td>
 	<meta http-equiv="description" content="This is my page">
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">

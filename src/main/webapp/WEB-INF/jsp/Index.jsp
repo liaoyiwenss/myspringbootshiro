@@ -33,7 +33,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/lrscroll_1.js"></script>
 
 
-<title>尤洪</title>
+<title>liaoyiwen</title>
 </head>
 <body>
 	<!--Begin Header Begin-->

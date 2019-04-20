@@ -24,7 +24,7 @@
     <script type="text/javascript" src="js/paper_ban.js"></script>
     <script type="text/javascript" src="js/baby_ban.js"></script>
     
-<title>尤洪</title>
+<title>liaoyiwen</title>
 </head>
 <body>  
 
