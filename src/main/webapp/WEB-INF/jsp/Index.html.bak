@@ -1362,7 +1362,7 @@
 
 
 <div class="top">
-    <div class="logo"><a href="${ctx}/Home?action=index"><img src="${ctx}/statics/images/logo.png"></a></div>
+    <div class="logo"><a href="${ctx}/Home?action=index"><img style="height: 55px" src="${ctx}/statics/images/logo.png"></a></div>
     <div class="search">
         <form>
             <input txype="text" value="" class="s_ipt">
