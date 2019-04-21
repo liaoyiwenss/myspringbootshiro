@@ -1,16 +1,16 @@
 package net.wanho.mapper.base;
 
 public interface BaseMapper<T> {
-    Long deleteByPrimaryKey(Long tid);
+    int deleteByPrimaryKey(Long tid);
 
-    Long insert(T record);
+    int insert(T record);
 
-    Long insertSelective(T record);
+    int insertSelective(T record);
 
     T selectByPrimaryKey(Long tid);
 
-    Long updateByPrimaryKeySelective(T record);
+    int updateByPrimaryKeySelective(T record);
 
-    Long updateByPrimaryKey(T record);
+    int updateByPrimaryKey(T record);
 
 }

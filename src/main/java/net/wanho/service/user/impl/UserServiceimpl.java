@@ -15,17 +15,17 @@ public class UserServiceimpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public Long deleteByPrimaryKey(Long tid) {
+    public int deleteByPrimaryKey(Long tid) {
         return userMapper.deleteByPrimaryKey(tid);
     }
 
     @Override
-    public Long insert(User record) {
+    public int insert(User record) {
         return userMapper.insert(record);
     }
 
     @Override
-    public Long insertSelective(User record) {
+    public int insertSelective(User record) {
         return userMapper.insertSelective(record);
     }
 
@@ -35,12 +35,12 @@ public class UserServiceimpl implements UserService {
     }
 
     @Override
-    public Long updateByPrimaryKeySelective(User record) {
+    public int updateByPrimaryKeySelective(User record) {
         return userMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
-    public Long updateByPrimaryKey(User record) {
+    public int updateByPrimaryKey(User record) {
         return userMapper.updateByPrimaryKeySelective(record);
     }
 
