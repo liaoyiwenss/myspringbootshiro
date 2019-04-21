@@ -41,4 +41,9 @@ public class UserServiceimpl implements UserService {
     public int updateByPrimaryKey(User record) {
         return userMapper.updateByPrimaryKeySelective(record);
     }
+
+    @Override
+    public User queryexUser(User user) {
+        return userMapper.queryexUser(user);
+    }
 }

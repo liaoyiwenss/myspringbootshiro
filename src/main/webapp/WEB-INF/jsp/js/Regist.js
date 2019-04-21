@@ -52,7 +52,7 @@
         var odom = e("username");//输入框DOM对象
         var vals=odom.value;
         		$.ajax({
-					"url" : path+"/servlet/ExistsUsername",
+					"url" : path+"/douser/ExistsUsername",
 					"type" : "post",
 					"data" : {"username":vals},
 					"dataType" : "Json",
@@ -104,7 +104,7 @@
         
         
         		$.ajax({
-						"url" : path+"/servlet/ExistsUsername",
+						"url" : path+"/douser/ExistsUsername",
 						"type" : "post",
 						"data" : {"username":vals},
 						"dataType" : "Json",

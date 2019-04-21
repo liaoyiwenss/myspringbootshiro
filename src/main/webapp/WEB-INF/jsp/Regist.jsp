@@ -47,13 +47,13 @@
 	<div class="regist">
     	<div class="log_img"><img src="${pageContext.request.contextPath}/images/l_img.png" width="611" height="425" /></div>
 		<div class="reg_c">
-        	<form action="${pageContext.request.contextPath}/servlet/Register">
+        	<form action="${pageContext.request.contextPath}/douser/toRegist">
             <table border="0" style="width:420px; font-size:14px; margin-top:20px;" cellspacing="0" cellpadding="0">
               <tr height="50" valign="top">
               	<td width="95">&nbsp;</td>
                 <td>
                 	<span class="fl" style="font-size:24px;">注册</span>
-                    <span class="fr">已有商城账号，<a href="${pageContext.request.contextPath}/page/Login.jsp" style="color:#ff4e00;">我要登录</a></span>
+                    <span class="fr">已有商城账号，<a href="${pageContext.request.contextPath}/show/Login" style="color:#ff4e00;">我要登录</a></span>
                 </td>
               </tr>
               <tr height="50">

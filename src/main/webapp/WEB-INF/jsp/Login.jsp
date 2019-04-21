@@ -52,7 +52,7 @@
               	<td width="55">&nbsp;</td>
                 <td>
                 	<span class="fl" style="font-size:24px;">登录</span>
-                    <span class="fr">还没有商城账号，<a href="${pageContext.request.contextPath}/page/Regist.jsp" style="color:#ff4e00;">立即注册</a></span>
+                    <span class="fr">还没有商城账号，<a href="${pageContext.request.contextPath}/show/Regist" style="color:#ff4e00;">立即注册</a></span>
                 </td>
               </tr>
               <tr height="70">
