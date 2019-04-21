@@ -4,24 +4,26 @@ import net.wanho.mapper.UserroleMapper;
 import net.wanho.pojo.Userrole;
 import net.wanho.service.user.UserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserRoleServiceimpl implements UserRoleService {
 
     @Autowired
     private UserroleMapper userroleMapper;
 
     @Override
-    public Long deleteByPrimaryKey(Long tid) {
+    public int deleteByPrimaryKey(Long tid) {
         return userroleMapper.deleteByPrimaryKey(tid);
     }
 
     @Override
-    public Long insert(Userrole record) {
+    public int insert(Userrole record) {
         return userroleMapper.insert(record);
     }
 
     @Override
-    public Long insertSelective(Userrole record) {
+    public int insertSelective(Userrole record) {
         return userroleMapper.insertSelective(record);
     }
 
@@ -31,12 +33,12 @@ public class UserRoleServiceimpl implements UserRoleService {
     }
 
     @Override
-    public Long updateByPrimaryKeySelective(Userrole record) {
+    public int updateByPrimaryKeySelective(Userrole record) {
         return userroleMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
-    public Long updateByPrimaryKey(Userrole record) {
+    public int updateByPrimaryKey(Userrole record) {
         return userroleMapper.updateByPrimaryKeySelective(record);
     }
 }

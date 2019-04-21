@@ -4,24 +4,26 @@ import net.wanho.mapper.PermissionMapper;
 import net.wanho.pojo.Permission;
 import net.wanho.service.user.PermissonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PermissonServiceimpl implements PermissonService {
 
     @Autowired
     private PermissionMapper permissionMapper;
 
     @Override
-    public Long deleteByPrimaryKey(Long tid) {
+    public int deleteByPrimaryKey(Long tid) {
         return permissionMapper.deleteByPrimaryKey(tid);
     }
 
     @Override
-    public Long insert(Permission record) {
+    public int insert(Permission record) {
         return permissionMapper.insert(record);
     }
 
     @Override
-    public Long insertSelective(Permission record) {
+    public int insertSelective(Permission record) {
         return permissionMapper.insertSelective(record);
     }
 
@@ -31,12 +33,12 @@ public class PermissonServiceimpl implements PermissonService {
     }
 
     @Override
-    public Long updateByPrimaryKeySelective(Permission record) {
+    public int updateByPrimaryKeySelective(Permission record) {
         return permissionMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
-    public Long updateByPrimaryKey(Permission record) {
+    public int updateByPrimaryKey(Permission record) {
         return permissionMapper.updateByPrimaryKey(record);
     }
 }
