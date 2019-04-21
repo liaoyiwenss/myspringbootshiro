@@ -7,7 +7,7 @@
     <result column="logicaldelete" property="logicaldelete" jdbcType="BIGINT" />
     <result column="modifytime" property="modifytime" jdbcType="TIMESTAMP" />
     <result column="rolename" property="rolename" jdbcType="VARCHAR" />
-    <collection property="permissions" ofType="Permission" resultMap="net.wanho.mapper.PermissionMapper.BaseResultMap" select="net.wanho.mapper.PermissionMapper.selectByPrimaryKey" column="tid"/>
+    <collection property="permissions" ofType="net.wanho.pojo.Permission" select="net.wanho.mapper.PermissionMapper.selectByPrimaryKey" column="tid"/>
   </resultMap>
   <sql id="Base_Column_List" >
     tid, createtime, logicaldelete, modifytime, rolename
@@ -31,21 +31,19 @@
     where tid = #{tid,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="net.wanho.pojo.Role"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
-    insert into role (tid, createtime, logicaldelete, 
+    insert into role ( createtime, logicaldelete,
       modifytime, rolename)
-    values (#{tid,jdbcType=BIGINT}, #{createtime,jdbcType=TIMESTAMP}, #{logicaldelete,jdbcType=BIGINT}, 
+    values (now(), 0,
       #{modifytime,jdbcType=TIMESTAMP}, #{rolename,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="net.wanho.pojo.Role"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
     insert into role
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="tid != null" >
-        tid,
-      </if>
-      <if test="createtime != null" >
+
+      <if test="1==1" >
         createtime,
       </if>
-      <if test="logicaldelete != null" >
+      <if test="1==1" >
         logicaldelete,
       </if>
       <if test="modifytime != null" >
@@ -56,14 +54,11 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="tid != null" >
-        #{tid,jdbcType=BIGINT},
+      <if test="1==1" >
+        now(),
       </if>
-      <if test="createtime != null" >
-        #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="logicaldelete != null" >
-        #{logicaldelete,jdbcType=BIGINT},
+      <if test="1==1" >
+        0,
       </if>
       <if test="modifytime != null" >
         #{modifytime,jdbcType=TIMESTAMP},
@@ -76,14 +71,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="net.wanho.pojo.Role" >
     update role
     <set >
-      <if test="createtime != null" >
-        createtime = #{createtime,jdbcType=TIMESTAMP},
-      </if>
       <if test="logicaldelete != null" >
         logicaldelete = #{logicaldelete,jdbcType=BIGINT},
       </if>
-      <if test="modifytime != null" >
-        modifytime = #{modifytime,jdbcType=TIMESTAMP},
+      <if test="modifytime 1==1" >
+        modifytime = now(),
       </if>
       <if test="rolename != null" >
         rolename = #{rolename,jdbcType=VARCHAR},

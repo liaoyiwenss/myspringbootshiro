@@ -23,23 +23,20 @@
     where tid = #{tid,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="net.wanho.pojo.Userrole"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
-    insert into userrole (tid, createtime, logicaldelete, 
+    insert into userrole ( createtime, logicaldelete,
       modifytime, userid, roleid
       )
-    values (#{tid,jdbcType=BIGINT}, #{createtime,jdbcType=TIMESTAMP}, #{logicaldelete,jdbcType=BIGINT}, 
+    values (now(), 0, #{logicaldelete,jdbcType=BIGINT},
       #{modifytime,jdbcType=TIMESTAMP}, #{userid,jdbcType=BIGINT}, #{roleid,jdbcType=BIGINT}
       )
   </insert>
   <insert id="insertSelective" parameterType="net.wanho.pojo.Userrole"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
     insert into userrole
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="tid != null" >
-        tid,
-      </if>
-      <if test="createtime != null" >
+      <if test="1 ==1" >
         createtime,
       </if>
-      <if test="logicaldelete != null" >
+      <if test="1 ==1" >
         logicaldelete,
       </if>
       <if test="modifytime != null" >
@@ -53,14 +50,12 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="tid != null" >
-        #{tid,jdbcType=BIGINT},
+
+      <if test="1==1" >
+       now(),
       </if>
-      <if test="createtime != null" >
-        #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="logicaldelete != null" >
-        #{logicaldelete,jdbcType=BIGINT},
+      <if test="1==1" >
+        0,
       </if>
       <if test="modifytime != null" >
         #{modifytime,jdbcType=TIMESTAMP},
@@ -76,14 +71,12 @@
   <update id="updateByPrimaryKeySelective" parameterType="net.wanho.pojo.Userrole" >
     update userrole
     <set >
-      <if test="createtime != null" >
-        createtime = #{createtime,jdbcType=TIMESTAMP},
-      </if>
+
       <if test="logicaldelete != null" >
         logicaldelete = #{logicaldelete,jdbcType=BIGINT},
       </if>
-      <if test="modifytime != null" >
-        modifytime = #{modifytime,jdbcType=TIMESTAMP},
+      <if test="modifytime ==1" >
+        modifytime = now(),
       </if>
       <if test="userid != null" >
         userid = #{userid,jdbcType=BIGINT},

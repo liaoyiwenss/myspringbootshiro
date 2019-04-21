@@ -122,7 +122,7 @@ public class UserController {
 
     @RequestMapping("addUser")
     public String addUser(String username, String password, String repassword,
-            String email, String phone, String realname, String indentified,Long type,HttpSession session)
+            String email, String phone, String realname, String indentified,HttpSession session)
     {
         String loginname=username;
         username=realname;
@@ -131,21 +131,23 @@ public class UserController {
         user.setEmail(email);
         user.setMobile(phone);
         user.setUsername(username);
+        user.setPassword(password);
         user.setIdentitycode(indentified);
+        user.setSex(0);
         String salt= UUID.randomUUID().toString();
         user.setPassword(userService.shiroMD5(user.getPassword(),salt));
         user.setSalt(salt);
         Role role=new Role();
         Permission permission=new Permission();
-        if(type==0)
+       /* if(type==0)
         {
             role.setRolename("admin");
             permission.setPermissionname("user:*");
         }else
-        {
+        {*/
             role.setRolename("user");
             permission.setPermissionname("user:query");
-        }
+        /*}*/
          userService.insert(user);
 
         roleService.insert(role);
