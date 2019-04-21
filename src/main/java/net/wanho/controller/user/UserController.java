@@ -1,9 +1,9 @@
 package net.wanho.controller.user;
 
+import com.alibaba.fastjson.JSON;
 import net.wanho.pojo.User;
 import net.wanho.service.user.UserService;
 import net.wanho.utils.RegUtils;
-import org.apache.shiro.web.session.HttpServletSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,14 +39,13 @@ public class UserController {
 
 
     @RequestMapping("/toRegister")
-    public String  toRegister(String username, String password, String repassword,
+    @ResponseBody
+    public Object  toRegister(String username, String password, String repassword,
                               String email, String phone, String realname, String indentified,
-                              HttpServletRequest request, HttpServletSession session,
+                              HttpServletRequest request, HttpSession session,
                               String kaptcha){
-
         String loginname=username;
         username=realname;
-
         User user=new User();
         user.setLoginname(loginname);
         user.setPassword(password);
@@ -54,62 +53,75 @@ public class UserController {
         user.setMobile(phone);
         user.setUsername(username);
         user.setIdentitycode(indentified);
-        boolean flag1= RegUtils.checkEmail(email);
+        RegUtils.checkEmail(email);
+        User users=userService.queryexUser(user);
+        if(users!=null)
+        {
+            request.setAttribute("Registinfo","用户名已存在！");
+            return "false";
+        }
+        if(!RegUtils.checkEmail(email))
+        {
+            request.setAttribute("Registinfo","邮箱格式不正确！");
+            return "false";
+        }
 
-        boolean flag2=RegUtils.checkIdentityCodeReg(indentified);
+        if(!RegUtils.checkIdentityCodeReg(indentified))
+        {
+            request.setAttribute("Registinfo","身份证格式不正确！");
+            return "false";
+        }
 
-        boolean flag3=RegUtils.checkMobile(phone);
-
-        boolean flag6=false;
+        if(!RegUtils.checkMobile(phone))
+        {
+            request.setAttribute("Registinfo","手机号格式不正确！");
+            return "false";
+        }
 
         String kaptchaExpected = (String) request.getSession().getAttribute(
                 com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
-        if (kaptcha.equalsIgnoreCase(kaptchaExpected)) {
-            flag6=true;
+        if(!kaptcha.equalsIgnoreCase(kaptchaExpected))
+        {
             request.setAttribute("Registinfo","验证码错误！");
+            return "false";
         }
-
-        User users=userService.queryexUser(user);
-        boolean flag4=true;
-        boolean flag5=true;
         if(!password.equals(repassword))
         {
-            flag5=false;
+            request.setAttribute("Registinfo","两此密码输入不一致！！");
+            return "false";
         }
-        if(users!=null)
-        {
-            flag4=false;
-            request.setAttribute("Registinfo","用户名已存在！");
-        }
-        if(flag1&&flag2&&flag3&&flag4&&flag5&&flag6)
-        {
-            userService.insert(user);
-            session.setAttribute("users", user);
-            logger.debug(user.getLoginname());
-            logger.debug(user.getPassword());
-            return "show/Login";
-        }else
-        {
-            logger.debug("flag1:"+flag1);
-            logger.debug("flag2"+flag2);
-            logger.debug("flag3"+flag3);
-            logger.debug("flag4"+flag4);
-            logger.debug("flag5"+flag5);
-            return "show/Regist";
-        }
+     return JSON.toJSONString(user);
+    }
+
+
+    @RequestMapping("addUser")
+    public String addUser(String username, String password, String repassword,
+            String email, String phone, String realname, String indentified,HttpSession session)
+    {
+        String loginname=username;
+        username=realname;
+        User user=new User();
+        user.setLoginname(loginname);
+        user.setPassword(password);
+        user.setEmail(email);
+        user.setMobile(phone);
+        user.setUsername(username);
+        user.setIdentitycode(indentified);
+        userService.insert(user);
+        session.setAttribute("users",user);
+        return "redirect:/show/Index";
     }
 
 
 
-    @RequestMapping("/ExistsUsername")
     @ResponseBody
+    @RequestMapping("/ExistsUsername")
     public Object ExistsUsername(String username){
 
 
         User user=new User();
         user.setLoginname(username);
         User users=userService.queryexUser(user);
-
-        return users;
+        return JSON.toJSONString(users);
     }
 }
