@@ -15,17 +15,17 @@ public class NewsServiceimpl implements NewsService {
     private NewsMapper newsMapper;
 
     @Override
-    public int deleteByPrimaryKey(Long tid) {
+    public Long deleteByPrimaryKey(Long tid) {
         return newsMapper.deleteByPrimaryKey(tid);
     }
 
     @Override
-    public int insert(News record) {
+    public Long insert(News record) {
         return newsMapper.insert(record);
     }
 
     @Override
-    public int insertSelective(News record) {
+    public Long insertSelective(News record) {
         return newsMapper.insertSelective(record);
     }
 
@@ -35,13 +35,13 @@ public class NewsServiceimpl implements NewsService {
     }
 
     @Override
-    public int updateByPrimaryKeySelective(News record) {
+    public Long updateByPrimaryKeySelective(News record) {
         return newsMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
-    public int updateByPrimaryKey(News record) {
-        return 0;
+    public Long updateByPrimaryKey(News record) {
+        return newsMapper.updateByPrimaryKey(record);
     }
 
     @Override

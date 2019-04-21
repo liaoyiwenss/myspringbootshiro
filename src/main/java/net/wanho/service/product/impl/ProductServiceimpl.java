@@ -25,17 +25,17 @@ public class ProductServiceimpl implements ProductService {
     }
 
     @Override
-    public int deleteByPrimaryKey(Long tid) {
+    public Long deleteByPrimaryKey(Long tid) {
         return productMapper.deleteByPrimaryKey(tid);
     }
 
     @Override
-    public int insert(Product record) {
+    public Long insert(Product record) {
         return productMapper.insert(record);
     }
 
     @Override
-    public int insertSelective(Product record) {
+    public Long insertSelective(Product record) {
         return productMapper.insertSelective(record);
     }
 
@@ -45,12 +45,12 @@ public class ProductServiceimpl implements ProductService {
     }
 
     @Override
-    public int updateByPrimaryKeySelective(Product record) {
+    public Long updateByPrimaryKeySelective(Product record) {
         return productMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
-    public int updateByPrimaryKey(Product record) {
+    public Long updateByPrimaryKey(Product record) {
         return productMapper.updateByPrimaryKey(record);
     }
 }

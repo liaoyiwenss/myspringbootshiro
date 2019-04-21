@@ -1,8 +1,8 @@
 package net.wanho.controller.user;
 
 import com.alibaba.fastjson.JSON;
-import net.wanho.pojo.User;
-import net.wanho.service.user.UserService;
+import net.wanho.pojo.*;
+import net.wanho.service.user.*;
 import net.wanho.utils.RegUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -26,6 +26,20 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    RoleService roleService;
+
+    @Autowired
+    RolePermissonService rolePermissonService;
+
+    @Autowired
+    UserRoleService userRoleService;
+
+    @Autowired
+    PermissonService permissonService;
+
+
 
     private Logger logger = LoggerFactory.getLogger(UserController.class);
 
@@ -110,7 +124,7 @@ public class UserController {
 
     @RequestMapping("addUser")
     public String addUser(String username, String password, String repassword,
-            String email, String phone, String realname, String indentified,HttpSession session)
+            String email, String phone, String realname, String indentified,Integer type,HttpSession session)
     {
         String loginname=username;
         username=realname;
@@ -123,7 +137,32 @@ public class UserController {
         String salt= UUID.randomUUID().toString();
         user.setPassword(userService.shiroMD5(user.getPassword(),salt));
         user.setSalt(salt);
-        int insert = userService.insert(user);
+        Role role=new Role();
+        Permission permission=new Permission();
+        if(type==0)
+        {
+            role.setRolename("admin");
+            permission.setPermissionname("user:*");
+        }else
+        {
+            role.setRolename("user");
+            permission.setPermissionname("user:query");
+        }
+        Long userid = userService.insert(user);
+
+        Long roleid = roleService.insert(role);
+
+        Long permissionid=permissonService.insert(permission);
+
+
+        Userrole userrole=new Userrole();
+        userrole.setUserid(userid);
+        userrole.setRoleid(roleid);
+        userRoleService.insert(userrole);
+        Rolepermission rolepermission=new Rolepermission();
+        rolepermission.setRoleid(roleid);
+        rolepermission.setPermissionid(permissionid);
+        rolePermissonService.insert(rolepermission);
         session.setAttribute("users",user);
         return "redirect:/show/Index";
     }

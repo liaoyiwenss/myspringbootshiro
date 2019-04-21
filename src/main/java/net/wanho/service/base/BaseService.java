@@ -2,15 +2,15 @@ package net.wanho.service.base;
 
 public interface BaseService<T> {
 
-    int deleteByPrimaryKey(Long tid);
+    Long deleteByPrimaryKey(Long tid);
 
-    int insert(T record);
+    Long insert(T record);
 
-    int insertSelective(T record);
+    Long insertSelective(T record);
 
     T selectByPrimaryKey(Long tid);
 
-    int updateByPrimaryKeySelective(T record);
+    Long updateByPrimaryKeySelective(T record);
 
-    int updateByPrimaryKey(T record);
+    Long updateByPrimaryKey(T record);
 }
