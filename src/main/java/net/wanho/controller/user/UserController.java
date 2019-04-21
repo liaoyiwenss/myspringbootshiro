@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/douser")
@@ -38,11 +39,11 @@ public class UserController {
     }
 
 
-    @RequestMapping("/toRegister")
+    @RequestMapping(value = "/toRegister",produces={"text/html;charset=UTF-8;","application/json;"})
     @ResponseBody
-    public Object  toRegister(String username, String password, String repassword,
+    public String  toRegister(String username, String password, String repassword,
                               String email, String phone, String realname, String indentified,
-                              HttpServletRequest request, HttpSession session,
+                              HttpServletRequest request,
                               String kaptcha){
         String loginname=username;
         username=realname;
@@ -57,40 +58,34 @@ public class UserController {
         User users=userService.queryexUser(user);
         if(users!=null)
         {
-            request.setAttribute("Registinfo","用户名已存在！");
-            return "false";
+            return "用户名已存在";
         }
         if(!RegUtils.checkEmail(email))
         {
-            request.setAttribute("Registinfo","邮箱格式不正确！");
-            return "false";
+            return "邮箱格式不正确";
         }
 
         if(!RegUtils.checkIdentityCodeReg(indentified))
         {
-            request.setAttribute("Registinfo","身份证格式不正确！");
-            return "false";
+            return "身份证格式不正确";
         }
 
         if(!RegUtils.checkMobile(phone))
         {
-            request.setAttribute("Registinfo","手机号格式不正确！");
-            return "false";
+            return "手机号格式不正确";
         }
 
         String kaptchaExpected = (String) request.getSession().getAttribute(
                 com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
         if(!kaptcha.equalsIgnoreCase(kaptchaExpected))
         {
-            request.setAttribute("Registinfo","验证码错误！");
-            return "false";
+            return "验证码错误";
         }
         if(!password.equals(repassword))
         {
-            request.setAttribute("Registinfo","两此密码输入不一致！！");
-            return "false";
+            return "两此密码输入不一致";
         }
-     return JSON.toJSONString(user);
+     return "true";
     }
 
 
@@ -102,17 +97,17 @@ public class UserController {
         username=realname;
         User user=new User();
         user.setLoginname(loginname);
-        user.setPassword(password);
         user.setEmail(email);
         user.setMobile(phone);
         user.setUsername(username);
         user.setIdentitycode(indentified);
+        String salt= UUID.randomUUID().toString();
+        user.setPassword(userService.shiroMD5(user.getPassword(),salt));
+        user.setSalt(salt);
         userService.insert(user);
         session.setAttribute("users",user);
         return "redirect:/show/Index";
     }
-
-
 
     @ResponseBody
     @RequestMapping("/ExistsUsername")

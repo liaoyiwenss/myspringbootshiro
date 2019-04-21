@@ -1,6 +1,7 @@
 package net.wanho.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 public class Role {
     private Long tid;
@@ -12,6 +13,16 @@ public class Role {
     private Date modifytime;
 
     private String rolename;
+
+    private List<Permission> permissions;
+
+    public List<Permission> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(List<Permission> permissions) {
+        this.permissions = permissions;
+    }
 
     public Long getTid() {
         return tid;

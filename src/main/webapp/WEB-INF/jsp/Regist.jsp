@@ -47,7 +47,7 @@
 	<div class="regist">
     	<div class="log_img"><img src="${pageContext.request.contextPath}/images/l_img.png" width="611" height="425" /></div>
 		<div class="reg_c">
-        	<form id="registerfrom" action="${pageContext.request.contextPath}/douser/toRegister">
+        	<form id="registerfrom" action="${pageContext.request.contextPath}/douser/addUser">
             <table border="0" style="width:420px; font-size:14px; margin-top:20px;" cellspacing="0" cellpadding="0">
               <tr height="50" valign="top">
               	<td width="95">&nbsp;</td>

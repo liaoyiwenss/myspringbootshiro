@@ -6,4 +6,6 @@ import net.wanho.service.base.BaseService;
 public interface UserService extends BaseService<User> {
 
     User queryexUser(User user);
+
+    String shiroMD5(String password,String salt);
 }

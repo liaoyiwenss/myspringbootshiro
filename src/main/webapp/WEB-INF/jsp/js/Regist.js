@@ -1,18 +1,4 @@
-$.fn.serializeObject = function () {
-    var o = {};
-    var a = this.serializeArray();
-    $.each(a, function () {
-        if (o[this.name]) {
-            if (!o[this.name].push) {
-                o[this.name] = [o[this.name]];
-            }
-            o[this.name].push(this.value || '');
-        } else {
-            o[this.name] = this.value || '';
-        }
-    });
-    return o;
-};
+
 $(".log_btn").click(function () {
     var u = $(" :text").get(0);
     if (u.validity.valueMissing == true) {
@@ -122,6 +108,7 @@ function checkUserName() {
             "success": function (result) {
                 debugger
                 if (result == null) {
+                    debugger
                     odom.style.borderColor = "green";
                     appendHtml(omsg, "可以使用", "ok_prompt");
                 } else {
@@ -144,19 +131,21 @@ $("#registerbutton").click(function () {
 
 
     var json = $("#registerfrom").serializeObject();
-
+    var odom = e("username");//输入框DOM对象
+    var omsg = e("usernameId");
     $.ajax({
         "url": path + "/douser/toRegister",
         "type": "post",
         "data": json,
         "dataType": "Json",
         "success": function (result) {
-
             debugger
-            if (result == null) {
-                flag = true;
+            if (result == true) {
+                $("#registerfrom").submit();
             } else {
-                flag = false;
+                debugger
+                odom.style.borderColor = "red";
+                appendHtml(omsg, result, "error_prompt");
             }
         }
     })

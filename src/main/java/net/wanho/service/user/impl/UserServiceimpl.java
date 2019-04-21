@@ -3,6 +3,8 @@ package net.wanho.service.user.impl;
 import net.wanho.mapper.UserMapper;
 import net.wanho.pojo.User;
 import net.wanho.service.user.UserService;
+import org.apache.shiro.crypto.hash.SimpleHash;
+import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,5 +47,14 @@ public class UserServiceimpl implements UserService {
     @Override
     public User queryexUser(User user) {
         return userMapper.queryexUser(user);
+    }
+
+    @Override
+    public String shiroMD5(String password, String salt) {
+        String algorithmName="md5";
+        ByteSource bytes = ByteSource.Util.bytes(salt);
+        int hashIterations=2;
+        Object object = new SimpleHash(algorithmName, password, bytes, hashIterations);
+        return object.toString();
     }
 }

@@ -15,7 +15,9 @@
     <result column="mobile" property="mobile" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="INTEGER" />
     <result column="salt" property="salt" jdbcType="VARCHAR" />
+    <collection property="roles" ofType="Role" resultMap="net.wanho.mapper.RoleMapper.BaseResultMap" select="net.wanho.mapper.RoleMapper.selectByPrimaryKey" column="tid"/>
   </resultMap>
+
   <sql id="Base_Column_List" >
     tid, createtime, logicaldelete, modifytime, loginname, username, password, sex, identitycode, 
     email, mobile, type, salt

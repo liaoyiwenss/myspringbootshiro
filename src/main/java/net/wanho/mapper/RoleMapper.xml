@@ -7,6 +7,7 @@
     <result column="logicaldelete" property="logicaldelete" jdbcType="BIGINT" />
     <result column="modifytime" property="modifytime" jdbcType="TIMESTAMP" />
     <result column="rolename" property="rolename" jdbcType="VARCHAR" />
+    <collection property="permissions" ofType="Permission" resultMap="net.wanho.mapper.PermissionMapper.BaseResultMap" select="net.wanho.mapper.PermissionMapper.selectByPrimaryKey" column="tid"/>
   </resultMap>
   <sql id="Base_Column_List" >
     tid, createtime, logicaldelete, modifytime, rolename
