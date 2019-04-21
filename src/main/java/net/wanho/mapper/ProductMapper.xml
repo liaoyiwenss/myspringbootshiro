@@ -36,7 +36,7 @@
     delete from product
     where tid = #{tid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="net.wanho.pojo.Product" useGeneratedKeys="true" keyProperty="tid">
+  <insert id="insert" parameterType="net.wanho.pojo.Product"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
     insert into product ( createtime, logicaldelete,
       modifytime, name, description, 
       price, stock, categorylevel1id, 
@@ -48,7 +48,7 @@
       #{categorylevel2id,jdbcType=BIGINT}, #{categorylevel3id,jdbcType=BIGINT}, #{filename,jdbcType=VARCHAR}, 
       #{isdelete,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="net.wanho.pojo.Product" >
+  <insert id="insertSelective" parameterType="net.wanho.pojo.Product"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
     insert into product
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="tid != null" >

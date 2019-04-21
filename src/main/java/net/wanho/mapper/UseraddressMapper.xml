@@ -24,7 +24,7 @@
     delete from useraddress
     where tid = #{tid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="net.wanho.pojo.Useraddress" >
+  <insert id="insert" parameterType="net.wanho.pojo.Useraddress"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
     insert into useraddress ( createtime, logicaldelete,
       modifytime, userid, address, 
       remark, isdefault)
@@ -32,7 +32,7 @@
       #{modifytime,jdbcType=TIMESTAMP}, #{userid,jdbcType=BIGINT}, #{address,jdbcType=VARCHAR}, 
       #{remark,jdbcType=VARCHAR}, #{isdefault,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="net.wanho.pojo.Useraddress" >
+  <insert id="insertSelective" parameterType="net.wanho.pojo.Useraddress"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
     insert into useraddress
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="tid != null" >

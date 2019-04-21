@@ -30,13 +30,13 @@
     delete from role
     where tid = #{tid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="net.wanho.pojo.Role" >
+  <insert id="insert" parameterType="net.wanho.pojo.Role"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
     insert into role (tid, createtime, logicaldelete, 
       modifytime, rolename)
     values (#{tid,jdbcType=BIGINT}, #{createtime,jdbcType=TIMESTAMP}, #{logicaldelete,jdbcType=BIGINT}, 
       #{modifytime,jdbcType=TIMESTAMP}, #{rolename,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="net.wanho.pojo.Role" >
+  <insert id="insertSelective" parameterType="net.wanho.pojo.Role"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
     insert into role
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="tid != null" >

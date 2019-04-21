@@ -40,7 +40,7 @@
     delete from news
     where tid = #{tid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="net.wanho.pojo.News" >
+  <insert id="insert" parameterType="net.wanho.pojo.News"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
     insert into news (createtime, logicaldelete,
       modifytime, title, content
       )
@@ -48,7 +48,7 @@
       #{modifytime,jdbcType=TIMESTAMP}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="net.wanho.pojo.News" >
+  <insert id="insertSelective" parameterType="net.wanho.pojo.News"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
     insert into news
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="tid != null" >

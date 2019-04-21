@@ -16,16 +16,6 @@ public class Role {
 
     private List<Permission> permissions;
 
-    private List<String> strpermissions;
-
-    public List<String> getStrpermissions() {
-        return strpermissions;
-    }
-
-    public void setStrpermissions(List<String> strpermissions) {
-        this.strpermissions = strpermissions;
-    }
-
     public List<Permission> getPermissions() {
         return permissions;
     }

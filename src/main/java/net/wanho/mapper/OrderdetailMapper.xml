@@ -24,7 +24,7 @@
     delete from orderdetail
     where tid = #{tid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="net.wanho.pojo.Orderdetail" >
+  <insert id="insert" parameterType="net.wanho.pojo.Orderdetail"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
     insert into orderdetail ( createtime, logicaldelete,
       modifytime, orderid, productid, 
       quantity, cost)
@@ -32,7 +32,7 @@
       #{modifytime,jdbcType=TIMESTAMP}, #{orderid,jdbcType=BIGINT}, #{productid,jdbcType=BIGINT}, 
       #{quantity,jdbcType=INTEGER}, #{cost,jdbcType=REAL})
   </insert>
-  <insert id="insertSelective" parameterType="net.wanho.pojo.Orderdetail" >
+  <insert id="insertSelective" parameterType="net.wanho.pojo.Orderdetail"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
     insert into orderdetail
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="tid != null" >

@@ -31,7 +31,7 @@
     delete from productcategory
     where tid = #{tid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="net.wanho.pojo.Productcategory" >
+  <insert id="insert" parameterType="net.wanho.pojo.Productcategory"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
     insert into productcategory ( createtime, logicaldelete,
       modifytime, name, parentid, 
       type, iconclass)
@@ -39,7 +39,7 @@
       #{modifytime,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, #{parentid,jdbcType=INTEGER}, 
       #{type,jdbcType=INTEGER}, #{iconclass,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="net.wanho.pojo.Productcategory" >
+  <insert id="insertSelective" parameterType="net.wanho.pojo.Productcategory"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
     insert into productcategory
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="tid != null" >

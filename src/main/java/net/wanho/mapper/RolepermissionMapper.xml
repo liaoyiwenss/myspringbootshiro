@@ -22,7 +22,7 @@
     delete from rolepermission
     where tid = #{tid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="net.wanho.pojo.Rolepermission" >
+  <insert id="insert" parameterType="net.wanho.pojo.Rolepermission"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
     insert into rolepermission (tid, createtime, logicaldelete, 
       modifytime, roleid, permissionid
       )
@@ -30,7 +30,7 @@
       #{modifytime,jdbcType=TIMESTAMP}, #{roleid,jdbcType=BIGINT}, #{permissionid,jdbcType=BIGINT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="net.wanho.pojo.Rolepermission" >
+  <insert id="insertSelective" parameterType="net.wanho.pojo.Rolepermission"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
     insert into rolepermission
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="tid != null" >

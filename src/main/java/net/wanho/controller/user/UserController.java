@@ -4,6 +4,10 @@ import com.alibaba.fastjson.JSON;
 import net.wanho.pojo.User;
 import net.wanho.service.user.UserService;
 import net.wanho.utils.RegUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +30,23 @@ public class UserController {
     private Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @RequestMapping("/tologin")
-    public String tologin(){
-        return "login";
+    public String tologin(String username,String password,HttpSession session){
+
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+        Subject subject = SecurityUtils.getSubject();
+        try {
+            subject.login(token);
+        } catch (AuthenticationException e) {
+            e.printStackTrace();
+            return "redirect:/show/Login";
+        }
+
+        User user=new User();
+        user.setLoginname(username);
+        user.setPassword(password);
+        User users = userService.queryexUser(user);
+        session.setAttribute("users",users);
+        return "redirect:/";
     }
     @RequestMapping("/selectalluser")
     public String selectalluser(HttpSession session, User user)
@@ -104,7 +123,7 @@ public class UserController {
         String salt= UUID.randomUUID().toString();
         user.setPassword(userService.shiroMD5(user.getPassword(),salt));
         user.setSalt(salt);
-        userService.insert(user);
+        int insert = userService.insert(user);
         session.setAttribute("users",user);
         return "redirect:/show/Index";
     }

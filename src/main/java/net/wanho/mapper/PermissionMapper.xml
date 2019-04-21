@@ -28,13 +28,13 @@
     delete from permission
     where tid = #{tid,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="net.wanho.pojo.Permission" >
+  <insert id="insert" parameterType="net.wanho.pojo.Permission"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
     insert into permission (tid, createtime, logicaldelete, 
       modifytime, permissionname)
     values (#{tid,jdbcType=BIGINT}, #{createtime,jdbcType=TIMESTAMP}, #{logicaldelete,jdbcType=BIGINT}, 
       #{modifytime,jdbcType=TIMESTAMP}, #{permissionname,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="net.wanho.pojo.Permission" >
+  <insert id="insertSelective" parameterType="net.wanho.pojo.Permission"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
     insert into permission
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="tid != null" >
