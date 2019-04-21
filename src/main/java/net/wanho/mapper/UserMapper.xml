@@ -15,7 +15,7 @@
     <result column="mobile" property="mobile" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="INTEGER" />
     <result column="salt" property="salt" jdbcType="VARCHAR" />
-    <collection property="roles" ofType="Role" resultMap="net.wanho.mapper.RoleMapper.BaseResultMap" select="net.wanho.mapper.RoleMapper.selectByPrimaryKey" column="tid"/>
+    <collection property="roles" ofType="Role" resultMap="net.wanho.mapper.RoleMapper.BaseResultMap" select="net.wanho.mapper.RoleMapper.selectUserandRole" column="tid"/>
   </resultMap>
 
   <sql id="Base_Column_List" >
@@ -28,7 +28,7 @@
     from user
     where tid = #{tid,jdbcType=BIGINT}
   </select>
-    <select id="queryexUser" resultType="net.wanho.pojo.User">
+    <select id="queryexUser" resultMap="BaseResultMap">
       SELECT *FROM user WHERE loginname=#{loginname}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >

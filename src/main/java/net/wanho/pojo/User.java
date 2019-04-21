@@ -33,7 +33,15 @@ public class User {
     private List<Role> roles;
 
 
+    private List<String> strroles;
 
+    public List<String> getStrroles() {
+        return strroles;
+    }
+
+    public void setStrroles(List<String> strroles) {
+        this.strroles = strroles;
+    }
 
     public List<Role> getRoles() {
         return roles;
