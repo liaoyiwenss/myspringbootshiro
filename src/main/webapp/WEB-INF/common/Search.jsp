@@ -41,7 +41,7 @@
     	 ]</div>
         <div class="car_bg">
        		<!--Begin 购物车未登录 Begin-->
-        	<div class="un_login">还未登录！<a href="${pageContext.request.contextPath}/page/Login.jsp" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
+        	<div class="un_login">还未登录！<a href="${pageContext.request.contextPath}/show/Login" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
             <!--End 购物车未登录 End-->
             <!--Begin 购物车已登录 Begin-->
             <ul class="cars">
@@ -76,7 +76,7 @@
             
             
              <c:if test="${empty users}">
-              <div class="price_a"><a href="${pageContext.request.contextPath}/page/Login.jsp">去登陆</a></div>
+              <div class="price_a"><a href="${pageContext.request.contextPath}/show/Login">去登陆</a></div>
              </c:if>
              <c:if test="${not empty users}">
              <div class="price_a"><a href="${pageContext.request.contextPath}/settlement/toSettlement.jsp">去购物车结算</a></div>

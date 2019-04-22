@@ -58,7 +58,7 @@ public class UserController {
         user.setPassword(password);
         User users = userService.queryexUser(user);
         session.setAttribute("users",users);
-        return "redirect:/";
+        return "redirect:/show/Index";
     }
     @RequestMapping("/selectalluser")
     public String selectalluser(HttpSession session, User user)

@@ -26,7 +26,7 @@
     insert into userrole ( createtime, logicaldelete,
       modifytime, userid, roleid
       )
-    values (now(), 0, #{logicaldelete,jdbcType=BIGINT},
+    values (now(), 0,
       #{modifytime,jdbcType=TIMESTAMP}, #{userid,jdbcType=BIGINT}, #{roleid,jdbcType=BIGINT}
       )
   </insert>

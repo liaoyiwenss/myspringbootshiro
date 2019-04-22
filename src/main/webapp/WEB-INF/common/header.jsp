@@ -1,3 +1,4 @@
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@include file="../common/common.jsp"%>
 
@@ -102,17 +103,16 @@
         
         <c:if test="${empty users}">
         
-        <span class="fl">你好，请<a href="${pageContext.request.contextPath}/page/Login.jsp">登录</a>&nbsp; <a href="${pageContext.request.contextPath}/show/Regist" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span>
+        <span class="fl">你好，请<a href="${pageContext.request.contextPath}/show/Login">登录</a>&nbsp; <a href="${pageContext.request.contextPath}/show/Regist" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span>
         </c:if>
         <c:if test="${not empty users}">
         
-        	 <c:if test="${users.type==1}">
-			 <span class="fl">${users.userName}<a href="${pageContext.request.contextPath}/servlet/Invilidaty">注销</a>&nbsp; <a href="${pageContext.request.contextPath}/servlet/Orderdetail?flag=1" style="color:#ff4e00;">后台管理</a>&nbsp;|&nbsp;<a href="${pageContext.request.contextPath}/servlet/Orderdetail?flag=1">我的订单</a>&nbsp;|</span>        	 
-        	 </c:if>
-        	 <c:if test="${users.type==0}">
-        	  <span class="fl">${users.userName}<a href="${pageContext.request.contextPath}/servlet/Invilidaty">注销</a>&nbsp; <a href="${pageContext.request.contextPath}/show/Regist" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="${pageContext.request.contextPath}/servlet/Orderdetail?flag=1">我的订单</a>&nbsp;|</span>
-        	 </c:if>
-       
+        	 <%--<c:if test="${users.type==1}">
+			 <span class="fl">${users.username}<a href="${pageContext.request.contextPath}/servlet/Invilidaty">注销</a>&nbsp; <a href="${pageContext.request.contextPath}/servlet/Orderdetail?flag=1" style="color:#ff4e00;">后台管理</a>&nbsp;|&nbsp;<a href="${pageContext.request.contextPath}/servlet/Orderdetail?flag=1">我的订单</a>&nbsp;|</span>
+        	 </c:if>--%>
+            <shiro:hasRole name="user">
+        	  <span class="fl">${users.username}<a href="${pageContext.request.contextPath}/servlet/Invilidaty">注销</a>&nbsp; <a href="${pageContext.request.contextPath}/show/Regist" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="${pageContext.request.contextPath}/servlet/Orderdetail?flag=1">我的订单</a>&nbsp;|</span>
+            </shiro:hasRole>
         </c:if>	
         	<span class="ss">
             	<div class="ss_list">

@@ -21,7 +21,7 @@
 
   <select id="selectUserandRole" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select
-    <include refid="Base_Column_List" />
+    *
     from role r
     left join userrole ur on r.tid=ur.roleid
     where userid = #{userid,jdbcType=BIGINT}

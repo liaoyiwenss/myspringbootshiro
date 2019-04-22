@@ -65,6 +65,6 @@ public class Realm extends AuthorizingRealm {
             throw new IncorrectCredentialsException("账号或者密码不正确");
         }
 
-        return new SimpleAuthenticationInfo(user.getUsername(),user.getPassword(), ByteSource.Util.bytes(user.getSalt()),getName());
+        return new SimpleAuthenticationInfo(user.getLoginname(),user.getPassword(), ByteSource.Util.bytes(user.getSalt()),getName());
     }
 }

@@ -19,7 +19,7 @@
   </select>
   <select id="selectRoleandPermission" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select
-    <include refid="Base_Column_List" />
+    *
     from permission p
     left join rolepermission rm on p.tid=rm.permissionid
     where roleid = #{roleid,jdbcType=BIGINT}
