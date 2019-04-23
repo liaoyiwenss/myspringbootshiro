@@ -93,4 +93,27 @@ public class ShowController {
     public String Product(){
         return "Product";
     }
+
+
+    @RequestMapping("toSettlement")
+    public String toSettlement(){
+
+        return "/settlement/toSettlement";
+    }
+
+
+    @RequestMapping("settlement1")
+    public String settlement1(){
+        return "/settlement/settlement1";
+    }
+
+    @RequestMapping("settlement2")
+    public String settlement2(){
+        return "/settlement/settlement2";
+    }
+
+    @RequestMapping("settlement3")
+    public String settlement3(){
+        return "/settlement/settlement3";
+    }
 }

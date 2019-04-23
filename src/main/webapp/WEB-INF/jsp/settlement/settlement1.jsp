@@ -2,11 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <script type="text/javascript">
-  var contextPath = "${ctx}";
   var path = "${ctx}";
 </script>
 <div class="content mar_20">
-    <img src="${ctx}/page/images/img1.jpg"/>
+    <img src="${ctx}/images/img1.jpg"/>
 </div>
 <!--Begin 第一步：查看购物车 Begin -->
 <div class="content mar_20" >
@@ -22,20 +21,20 @@
             <tr>
                 <td>
                     <div class="c_s_img">
-                        <a href="${ctx}/Product?action=queryProductDeatil&id=${temp.product.id}"><img src="${ctx}/files/${temp.product.fileName}" width="73" height="73"/></a>
+                        <a href="${ctx}/Product?action=queryProductDeatil&id=${temp.product.tid}"><img src="${ctx}${filepath}${temp.product.filename}" width="73" height="73"/></a>
                     </div>
                         ${temp.product.name}
                 </td>
                 <td align="center" style="color:#ff4e00;">￥${temp.product.price}</td>
                 <td align="center">
                     <div class="c_num">
-                        <input type="button" value="" onclick="subQuantity(this,'${temp.product.id}',${temp.quantity});" class="car_btn_1"/>
-                        <input type="text" value="${temp.quantity}" name="${temp.product.id}" class="car_ipt"/>
-                        <input type="button" value="" onclick="addQuantity(this,'${temp.product.id}',${temp.quantity});" class="car_btn_2"/>
+                        <input type="button" value="" onclick="subQuantity(this,'${temp.product.tid}',${temp.quantity});" class="car_btn_1"/>
+                        <input type="text" value="${temp.quantity}" name="${temp.product.tid}" class="car_ipt"/>
+                        <input type="button" value="" onclick="addQuantity(this,'${temp.product.tid}',${temp.quantity});" class="car_btn_2"/>
                     </div>
                 </td>
                 <td align="center" style="color:#ff4e00;">￥${temp.cost}</td>
-                <td align="center"><a href="javascript:void(0);" onclick="removeCart('${temp.product.id}');" >删除</a>&nbsp; &nbsp;</td>
+                <td align="center"><a href="javascript:void(0);" onclick="removeCart('${temp.product.tid}');" >删除</a>&nbsp; &nbsp;</td>
             </tr>
         </c:forEach>
         <tr height="70">
@@ -50,9 +49,9 @@
         </tr>
         <tr valign="top" height="150">
             <td colspan="6" align="right">
-                <a  href="${pageContext.request.contextPath}"><img src="${ctx}/page/images/buy1.gif" /></a>&nbsp;&nbsp;
+                <a  href="${pageContext.request.contextPath}"><img src="${ctx}/images/buy1.gif" /></a>&nbsp;&nbsp;
                 <c:if test="${sessionScope.cartlist!=null && sessionScope.cartlist.sum>0}">
-                    <a href="javascript:void(0);" onclick="settlement2();"><img src="${ctx}/page/images/buy2.gif" /></a>
+                    <a href="javascript:void(0);" onclick="settlement2();"><img src="${ctx}/images/buy2.gif" /></a>
                 </c:if>
             </td>
         </tr>

@@ -79,7 +79,7 @@
               <div class="price_a"><a href="${pageContext.request.contextPath}/show/Login">去登陆</a></div>
              </c:if>
              <c:if test="${not empty users}">
-             <div class="price_a"><a href="${pageContext.request.contextPath}/settlement/toSettlement.jsp">去购物车结算</a></div>
+             <div class="price_a"><a href="${pageContext.request.contextPath}/show/toSettlement">去购物车结算</a></div>
              </c:if>
             
             <!--End 购物车已登录 End-->
