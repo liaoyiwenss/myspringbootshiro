@@ -24,7 +24,8 @@
 	<div class="sou">
     	<!--Begin 所在收货地区 Begin-->
     	<span class="s_city_b">
-        	<span class="fl">送货至：</span>
+        	<span class="fl">送货至：
+            </span>
             <span class="s_city">
             	<span>四川</span>
                 <div class="s_city_bg">
@@ -106,14 +107,14 @@
         <span class="fl">你好，请<a href="${pageContext.request.contextPath}/show/Login">登录</a>&nbsp; <a href="${pageContext.request.contextPath}/show/Regist" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span>
         </c:if>
         <c:if test="${not empty users}">
-        
-        	 <%--<c:if test="${users.type==1}">
+
+            <shiro:hasRole name="admin">
 			 <span class="fl">${users.username}<a href="${pageContext.request.contextPath}/servlet/Invilidaty">注销</a>&nbsp; <a href="${pageContext.request.contextPath}/servlet/Orderdetail?flag=1" style="color:#ff4e00;">后台管理</a>&nbsp;|&nbsp;<a href="${pageContext.request.contextPath}/servlet/Orderdetail?flag=1">我的订单</a>&nbsp;|</span>
-        	 </c:if>--%>
-            <shiro:hasRole name="user">
-        	  <span class="fl">${users.username}<a href="${pageContext.request.contextPath}/servlet/Invilidaty">注销</a>&nbsp; <a href="${pageContext.request.contextPath}/show/Regist" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="${pageContext.request.contextPath}/servlet/Orderdetail?flag=1">我的订单</a>&nbsp;|</span>
             </shiro:hasRole>
-        </c:if>	
+            <shiro:hasRole name="user">
+        	  <span class="fl">${users.username}<a href="${pageContext.request.contextPath}/douser/Invilidaty">注销</a>&nbsp; <a href="${pageContext.request.contextPath}/show/Regist" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="${pageContext.request.contextPath}/servlet/Orderdetail?flag=1">我的订单</a>&nbsp;|</span>
+            </shiro:hasRole>
+        </c:if>
         	<span class="ss">
             	<div class="ss_list">
                 	<a href="#">收藏夹</a>

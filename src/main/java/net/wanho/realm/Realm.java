@@ -19,17 +19,13 @@ import java.util.stream.Collectors;
 public class Realm extends AuthorizingRealm {
 
 
+    private static User user;
+
     @Autowired
     private UserService userService;
     //    授权
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-
-
-        String username = (String) principalCollection.getPrimaryPrincipal();
-        User users=new User();
-        users.setLoginname(username);
-        User user = userService.queryexUser(users);
         List<Role> userrole = user.getRoles();
         List<String> roles = userrole.stream().map(Role :: getRolename).collect(Collectors.toList());
         List<String> permissions=new ArrayList<>();
@@ -64,6 +60,8 @@ public class Realm extends AuthorizingRealm {
         if (!newPwd .equals( user.getPassword())) {
             throw new IncorrectCredentialsException("账号或者密码不正确");
         }
+
+        Realm.user=user;
 
         return new SimpleAuthenticationInfo(user.getLoginname(),user.getPassword(), ByteSource.Util.bytes(user.getSalt()),getName());
     }

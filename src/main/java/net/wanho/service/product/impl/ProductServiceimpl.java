@@ -17,9 +17,9 @@ public class ProductServiceimpl implements ProductService {
     private ProductMapper productMapper;
 
     @Override
-    public PageInfo<Product> selectProductbyEntity(Integer start,Integer limit,Integer navigatePages) {
+    public PageInfo<Product> selectProductbyEntity(Integer pcid,String proname,Integer start,Integer limit,Integer navigatePages) {
         PageHelper.startPage(start, limit);
-        List<Product> products = productMapper.selectProductbyEntity();
+        List<Product> products = productMapper.selectProductbyEntity(pcid,proname);
         PageInfo<Product> pageinfo=new PageInfo<Product>(products,navigatePages);
         return pageinfo;
     }

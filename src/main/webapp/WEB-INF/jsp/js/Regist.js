@@ -137,8 +137,9 @@ $("#registerbutton").click(function () {
         "url": path + "/douser/toRegister",
         "type": "post",
         "data": json,
-        "dataType": "Json",
+        // "dataType": "Json",
         "success": function (result) {
+            console.log(result);
             debugger
             if (result == true) {
                 $("#registerfrom").submit();

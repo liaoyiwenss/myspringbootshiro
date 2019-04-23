@@ -39,13 +39,13 @@ public class ShowController {
 
 
         session.setAttribute("pclist",pclist);
-        PageInfo<Product> productPageInfo = productService.selectProductbyEntity(0, 6, 1);
-        PageInfo<Product> productPageInfo1 =productService.selectProductbyEntity(1,6,1);
-        PageInfo<Product> productPageInfo2 =productService.selectProductbyEntity(2,6,1);
-        PageInfo<Product> productPageInfo3 =productService.selectProductbyEntity(3,6,1);
-        PageInfo<Product> productPageInfo4 =productService.selectProductbyEntity(4,6,1);
-        PageInfo<Product> productPageInfo5 =productService.selectProductbyEntity(5,6,1);
-        PageInfo<Product> productPageInfo6 =productService.selectProductbyEntity(6,6,1);
+        PageInfo<Product> productPageInfo = productService.selectProductbyEntity(null,null,0, 6, 1);
+        PageInfo<Product> productPageInfo1 =productService.selectProductbyEntity(null,null,1,6,1);
+        PageInfo<Product> productPageInfo2 =productService.selectProductbyEntity(null,null,2,6,1);
+        PageInfo<Product> productPageInfo3 =productService.selectProductbyEntity(null,null,3,6,1);
+        PageInfo<Product> productPageInfo4 =productService.selectProductbyEntity(null,null,4,6,1);
+        PageInfo<Product> productPageInfo5 =productService.selectProductbyEntity(null,null,5,6,1);
+        PageInfo<Product> productPageInfo6 =productService.selectProductbyEntity(null,null,6,6,1);
 
         map.put("productlist",productPageInfo.getList());
         map.put("productlist1",productPageInfo1.getList());
@@ -82,5 +82,10 @@ public class ShowController {
     @RequestMapping("Regist")
     public String Regist(){
         return "Regist";
+    }
+
+    @RequestMapping("CategoryList")
+    public String CategoryList(){
+        return "CategoryList";
     }
 }

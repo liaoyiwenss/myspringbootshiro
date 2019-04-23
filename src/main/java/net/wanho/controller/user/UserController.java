@@ -177,4 +177,13 @@ public class UserController {
         User users=userService.queryexUser(user);
         return JSON.toJSONString(users);
     }
+
+    @RequestMapping("/Invilidaty")
+    public String Invilidaty(HttpSession session){
+        session.removeAttribute("users");
+        session.removeAttribute("cartlist");
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        return "redirect:/show/Login";
+    }
 }

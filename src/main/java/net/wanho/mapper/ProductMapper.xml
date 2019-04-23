@@ -31,6 +31,12 @@
       <include refid="Base_Column_List" />
       from product
      where logicaldelete=0
+    <if test="proname!=null and proname!=''">
+      and name like concat('%',#{proname},'%')
+    </if>
+    <if test="pcid!=null">
+      and  (categorylevel1id=#{pcid}  or  categorylevel2id=#{pcid}  or  categorylevel3id=#{pcid})
+    </if>
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from product

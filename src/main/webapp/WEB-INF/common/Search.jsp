@@ -19,9 +19,9 @@
   
   <body>
     <div class="top">
-    <div class="logo"><a href="${pageContext.request.contextPath}"><img style="height: 55px" src="${pageContext.request.contextPath}/images/logo.png" /></a></div>
+    <div class="logo"><a href="${pageContext.request.contextPath}/show/Index"><img style="height: 55px" src="${pageContext.request.contextPath}/images/logo.png" /></a></div>
     <div class="search">
-    	<form action="${pageContext.request.contextPath}/servlet/QueryproductList">
+    	<form action="${pageContext.request.contextPath}/doproduct/queryproductList">
         	<input type="text" value="" name="proName" class="s_ipt" />
             <input type="submit" value="搜索" class="s_btn" />
         </form>                      
