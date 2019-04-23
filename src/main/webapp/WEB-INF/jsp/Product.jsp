@@ -3,31 +3,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
     <!--[if IE 6]>
-    <script src="js/iepng.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/iepng.js" type="text/javascript"></script>
         <script type="text/javascript">
            EvPNG.fix('div, ul, img, li, input, a'); 
         </script>
     <![endif]-->
     
-    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="js/menu.js"></script>    
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/menu.js"></script>
             
-	<script type="text/javascript" src="js/lrscroll_1.js"></script>   
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/lrscroll_1.js"></script>
      
     
-	<script type="text/javascript" src="js/n_nav.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/n_nav.js"></script>
     
-    <link rel="stylesheet" type="text/css" href="css/ShopShow.css" />
-    <link rel="stylesheet" type="text/css" href="css/MagicZoom.css" />
-    <script type="text/javascript" src="js/MagicZoom.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/ShopShow.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/MagicZoom.css" />
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/MagicZoom.js"></script>
     
-    <script type="text/javascript" src="js/num.js">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/num.js">
     	var jq = jQuery.noConflict();
     </script>
         
-    <script type="text/javascript" src="js/p_tab.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/p_tab.js"></script>
     
     
 <title>liaoyiwen</title>
@@ -61,24 +61,24 @@
     <div class="content">
     	                    
         <div id="tsShopContainer">
-            <div id="tsImgS"><a href="images/p_big.jpg" title="Images" class="MagicZoom" id="MagicZoom"><img src="images/p_big.jpg" width="390" height="390" /></a></div>
+            <div id="tsImgS"><a href="${pageContext.request.contextPath}${filepath}${pro.filename}" title="Images" class="MagicZoom" id="MagicZoom"><img src="${pageContext.request.contextPath}${filepath}${pro.filename}" width="390" height="390" /></a></div>
             <div id="tsPicContainer">
                 <div id="tsImgSArrL" onclick="tsScrollArrLeft()"></div>
                 <div id="tsImgSCon">
                     <ul>
-                        <li onclick="showPic(0)" rel="MagicZoom" class="tsSelectImg"><img src="images/ps1.jpg" tsImgS="images/ps1.jpg" width="79" height="79" /></li>
-                        <li onclick="showPic(1)" rel="MagicZoom"><img src="images/ps2.jpg" tsImgS="images/ps2.jpg" width="79" height="79" /></li>
-                        <li onclick="showPic(2)" rel="MagicZoom"><img src="images/ps3.jpg" tsImgS="images/ps3.jpg" width="79" height="79" /></li>
-                        <li onclick="showPic(3)" rel="MagicZoom"><img src="images/ps4.jpg" tsImgS="images/ps4.jpg" width="79" height="79" /></li>
-                        <li onclick="showPic(4)" rel="MagicZoom"><img src="images/ps1.jpg" tsImgS="images/ps1.jpg" width="79" height="79" /></li>
-                        <li onclick="showPic(5)" rel="MagicZoom"><img src="images/ps2.jpg" tsImgS="images/ps2.jpg" width="79" height="79" /></li>
-                        <li onclick="showPic(6)" rel="MagicZoom"><img src="images/ps3.jpg" tsImgS="images/ps3.jpg" width="79" height="79" /></li>
-                        <li onclick="showPic(7)" rel="MagicZoom"><img src="images/ps4.jpg" tsImgS="images/ps4.jpg" width="79" height="79" /></li>
+                        <li onclick="showPic(0)" rel="MagicZoom" class="tsSelectImg"><img src="${pageContext.request.contextPath}/images/ps1.jpg" tsImgS="${pageContext.request.contextPath}/images/ps1.jpg" width="79" height="79" /></li>
+                        <li onclick="showPic(1)" rel="MagicZoom"><img src="${pageContext.request.contextPath}/images/ps2.jpg" tsImgS="${pageContext.request.contextPath}/images/ps2.jpg" width="79" height="79" /></li>
+                        <li onclick="showPic(2)" rel="MagicZoom"><img src="${pageContext.request.contextPath}/images/ps3.jpg" tsImgS="${pageContext.request.contextPath}/images/ps3.jpg" width="79" height="79" /></li>
+                        <li onclick="showPic(3)" rel="MagicZoom"><img src="${pageContext.request.contextPath}/images/ps4.jpg" tsImgS="${pageContext.request.contextPath}/images/ps4.jpg" width="79" height="79" /></li>
+                        <li onclick="showPic(4)" rel="MagicZoom"><img src="${pageContext.request.contextPath}/images/ps1.jpg" tsImgS="${pageContext.request.contextPath}/images/ps1.jpg" width="79" height="79" /></li>
+                        <li onclick="showPic(5)" rel="MagicZoom"><img src="${pageContext.request.contextPath}/images/ps2.jpg" tsImgS="${pageContext.request.contextPath}/images/ps2.jpg" width="79" height="79" /></li>
+                        <li onclick="showPic(6)" rel="MagicZoom"><img src="${pageContext.request.contextPath}/images/ps3.jpg" tsImgS="${pageContext.request.contextPath}/images/ps3.jpg" width="79" height="79" /></li>
+                        <li onclick="showPic(7)" rel="MagicZoom"><img src="${pageContext.request.contextPath}/images/ps4.jpg" tsImgS="${pageContext.request.contextPath}/images/ps4.jpg" width="79" height="79" /></li>
                     </ul>
                 </div>
                 <div id="tsImgSArrR" onclick="tsScrollArrRight()"></div>
             </div>
-            <img class="MagicZoomLoading" width="16" height="16" src="${pageContext.request.contextPath}${filepath}${pro.fileName}" alt="Loading..." />				
+            <img class="MagicZoomLoading" width="16" height="16" src="${pageContext.request.contextPath}${filepath}${pro.filename}" alt="Loading..." />
         </div>
         
         <div class="pro_des">
@@ -109,11 +109,11 @@
             	<div class="d_sh">
                 	分享
                     <div class="d_sh_bg">
-                    	<a href="#"><img src="images/sh_1.gif" /></a>
-                        <a href="#"><img src="images/sh_2.gif" /></a>
-                        <a href="#"><img src="images/sh_3.gif" /></a>
-                        <a href="#"><img src="images/sh_4.gif" /></a>
-                        <a href="#"><img src="images/sh_5.gif" /></a>
+                    	<a href="#"><img src="${pageContext.request.contextPath}/images/sh_1.gif" /></a>
+                        <a href="#"><img src="${pageContext.request.contextPath}/images/sh_2.gif" /></a>
+                        <a href="#"><img src="${pageContext.request.contextPath}/images/sh_3.gif" /></a>
+                        <a href="#"><img src="${pageContext.request.contextPath}/images/sh_4.gif" /></a>
+                        <a href="#"><img src="${pageContext.request.contextPath}/images/sh_5.gif" /></a>
                     </div>
                 </div>
                 <div class="d_care"><a onclick="ShowDiv('MyDiv','fade')">关注商品</a></div>
@@ -128,12 +128,12 @@
                 <!-- ShowDiv_1('MyDiv1','fade1') -->
                 
                <!--  jQuery('.n_ipt').val() -->
-                <span class="fl"><a onclick="add(${pro.id},jQuery('.n_ipt').val())"><img src="images/j_car.png" /></a></span>
+                <span class="fl"><a onclick="add(${pro.tid},jQuery('.n_ipt').val())"><img src="${pageContext.request.contextPath}/images/j_car.png" /></a></span>
             </div>            
         </div>    
         
         <div class="s_brand">
-        	<div class="s_brand_img"><img src="images/sbrand.jpg" width="188" height="132" /></div>
+        	<div class="s_brand_img"><img src="${pageContext.request.contextPath}/images/sbrand.jpg" width="188" height="132" /></div>
             <div class="s_brand_c"><a href="#">进入品牌专区</a></div>
         </div>    
         
@@ -144,35 +144,35 @@
         	<div class="fav_t">用户还喜欢</div>
         	<ul>
             	<li>
-                    <div class="img"><a href="#"><img src="images/his_1.jpg" width="185" height="162" /></a></div>
+                    <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/his_1.jpg" width="185" height="162" /></a></div>
                 	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
                     <div class="price">
                     	<font>￥<span>368.00</span></font> &nbsp; 18R
                     </div>
                 </li>
                 <li>
-                    <div class="img"><a href="#"><img src="images/his_2.jpg" width="185" height="162" /></a></div>
+                    <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/his_2.jpg" width="185" height="162" /></a></div>
                 	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
                     <div class="price">
                     	<font>￥<span>768.00</span></font> &nbsp; 18R
                     </div>
                 </li>
                 <li>
-                    <div class="img"><a href="#"><img src="images/his_3.jpg" width="185" height="162" /></a></div>
+                    <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/his_3.jpg" width="185" height="162" /></a></div>
                 	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
                     <div class="price">
                     	<font>￥<span>680.00</span></font> &nbsp; 18R
                     </div>
                 </li>
                 <li>
-                    <div class="img"><a href="#"><img src="images/his_4.jpg" width="185" height="162" /></a></div>
+                    <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/his_4.jpg" width="185" height="162" /></a></div>
                 	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
                     <div class="price">
                     	<font>￥<span>368.00</span></font> &nbsp; 18R
                     </div>
                 </li>
                 <li>
-                    <div class="img"><a href="#"><img src="images/his_5.jpg" width="185" height="162" /></a></div>
+                    <div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/his_5.jpg" width="185" height="162" /></a></div>
                 	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
                     <div class="price">
                     	<font>￥<span>368.00</span></font> &nbsp; 18R
@@ -188,36 +188,36 @@
                     </ul>
                 </div>
                 <div class="team_list">
-                	<div class="img"><a href="#"><img src="images/mat_1.jpg" width="160" height="140" /></a></div>
+                	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/mat_1.jpg" width="160" height="140" /></a></div>
                 	<div class="name"><a href="#">倩碧补水组合套装8折促销</a></div>
                     <div class="price">
                     	<div class="checkbox"><input type="checkbox" name="zuhe" checked="checked" /></div>
                     	<font>￥<span>768.00</span></font> &nbsp; 18R
                     </div>
                 </div>
-                <div class="team_icon"><img src="images/jia_b.gif" /></div>
+                <div class="team_icon"><img src="${pageContext.request.contextPath}/images/jia_b.gif" /></div>
                 <div class="team_list">
-                	<div class="img"><a href="#"><img src="images/mat_2.jpg" width="160" height="140" /></a></div>
+                	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/mat_2.jpg" width="160" height="140" /></a></div>
                 	<div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                     <div class="price">
                     	<div class="checkbox"><input type="checkbox" name="zuhe" /></div>
                     	<font>￥<span>749.00</span></font> &nbsp; 18R
                     </div>
                 </div>
-                <div class="team_icon"><img src="images/jia_b.gif" /></div>
+                <div class="team_icon"><img src="${pageContext.request.contextPath}/images/jia_b.gif" /></div>
                 <div class="team_list">
-                	<div class="img"><a href="#"><img src="images/mat_3.jpg" width="160" height="140" /></a></div>
+                	<div class="img"><a href="#"><img src="${pageContext.request.contextPath}/images/mat_3.jpg" width="160" height="140" /></a></div>
                 	<div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
                     <div class="price">
                     	<div class="checkbox"><input type="checkbox" name="zuhe" checked="checked" /></div>
                     	<font>￥<span>749.00</span></font> &nbsp; 18R
                     </div>
                 </div>
-                <div class="team_icon"><img src="images/equl.gif" /></div>
+                <div class="team_icon"><img src="${pageContext.request.contextPath}/images/equl.gif" /></div>
                 <div class="team_sum">
                 	套餐价：￥<span>1517</span><br />
                     <input type="text" value="1" class="sum_ipt" /><br />
-                    <a href="#"><img src="images/z_buy.gif" /></a> 
+                    <a href="#"><img src="${pageContext.request.contextPath}/images/z_buy.gif" /></a>
                 </div>
                 
             </div>
@@ -261,7 +261,7 @@
                 <div class="des_con">
                 	<table border="0" align="center" style="width:745px; font-size:14px; font-family:'宋体';" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td width="265"><img src="images/de1.jpg" width="206" height="412" /></td>
+                        <td width="265"><img src="${pageContext.request.contextPath}/images/de1.jpg" width="206" height="412" /></td>
                         <td>
                         	<b>迪奥真我香水(Q版)</b><br />
                             【商品规格】：5ml<br />
@@ -276,10 +276,10 @@
                     </table>
                     
                     <p align="center">
-                    <img src="images/de2.jpg" width="746" height="425" /><br /><br />
-                    <img src="images/de3.jpg" width="750" height="417" /><br /><br />
-                    <img src="images/de4.jpg" width="750" height="409" /><br /><br />
-                    <img src="images/de5.jpg" width="750" height="409" />
+                    <img src="${pageContext.request.contextPath}/images/de2.jpg" width="746" height="425" /><br /><br />
+                    <img src="${pageContext.request.contextPath}/images/de3.jpg" width="750" height="417" /><br /><br />
+                    <img src="${pageContext.request.contextPath}/images/de4.jpg" width="750" height="409" /><br /><br />
+                    <img src="${pageContext.request.contextPath}/images/de5.jpg" width="750" height="409" />
 					</p>
                     
                 </div>
@@ -297,22 +297,22 @@
                     	<table border="0" style="width:100%;" cellspacing="0" cellpadding="0">
                           <tr>
                             <td width="90">好评<font color="#999999">（80%）</font></td>
-                            <td><img src="images/pl.gif" align="absmiddle" /></td>
+                            <td><img src="${pageContext.request.contextPath}/images/pl.gif" align="absmiddle" /></td>
                           </tr>
                           <tr>
                             <td>中评<font color="#999999">（20%）</font></td>
-                            <td><img src="images/pl.gif" align="absmiddle" /></td>
+                            <td><img src="${pageContext.request.contextPath}/images/pl.gif" align="absmiddle" /></td>
                           </tr>
                           <tr>
                             <td>差评<font color="#999999">（0%）</font></td>
-                            <td><img src="images/pl.gif" align="absmiddle" /></td>
+                            <td><img src="${pageContext.request.contextPath}/images/pl.gif" align="absmiddle" /></td>
                           </tr>
                         </table>
                     </td>
                     <td width="185" class="jud_bg">
                     	购买过雅诗兰黛第六代特润精华露50ml的顾客，在收到商品才可以对该商品发表评论
                     </td>
-                    <td class="jud_bg">您可对已购买商品进行评价<br /><a href="#"><img src="images/btn_jud.gif" /></a></td>
+                    <td class="jud_bg">您可对已购买商品进行评价<br /><a href="#"><img src="${pageContext.request.contextPath}/images/btn_jud.gif" /></a></td>
                   </tr>
                 </table>
                 
@@ -320,7 +320,7 @@
                 				
                 <table border="0" class="jud_list" style="width:100%; margin-top:30px;" cellspacing="0" cellpadding="0">
                   <tr valign="top">
-                    <td width="160"><img src="images/peo1.jpg" width="20" height="20" align="absmiddle" />&nbsp;向死而生</td>
+                    <td width="160"><img src="${pageContext.request.contextPath}/images/peo1.jpg" width="20" height="20" align="absmiddle" />&nbsp;向死而生</td>
                     <td width="180">
                     	颜色分类：<font color="#999999">粉色</font> <br />
                         型号：<font color="#999999">50ml</font>
@@ -331,7 +331,7 @@
                     </td>
                   </tr>
                   <tr valign="top">
-                    <td width="160"><img src="images/peo2.jpg" width="20" height="20" align="absmiddle" />&nbsp;就是这么想的</td>
+                    <td width="160"><img src="${pageContext.request.contextPath}/images/peo2.jpg" width="20" height="20" align="absmiddle" />&nbsp;就是这么想的</td>
                     <td width="180">
                     	颜色分类：<font color="#999999">粉色</font> <br />
                         型号：<font color="#999999">50ml</font>
@@ -342,7 +342,7 @@
                     </td>
                   </tr>
                   <tr valign="top">
-                    <td width="160"><img src="images/peo3.jpg" width="20" height="20" align="absmiddle" />&nbsp;墨镜墨镜</td>
+                    <td width="160"><img src="${pageContext.request.contextPath}/images/peo3.jpg" width="20" height="20" align="absmiddle" />&nbsp;墨镜墨镜</td>
                     <td width="180">
                     	颜色分类：<font color="#999999">粉色</font> <br />
                         型号：<font color="#999999">50ml</font>
@@ -353,7 +353,7 @@
                     </td>
                   </tr>
                   <tr valign="top">
-                    <td width="160"><img src="images/peo4.jpg" width="20" height="20" align="absmiddle" />&nbsp;那*****洋 <br /><font color="#999999">（匿名用户）</font></td>
+                    <td width="160"><img src="${pageContext.request.contextPath}/images/peo4.jpg" width="20" height="20" align="absmiddle" />&nbsp;那*****洋 <br /><font color="#999999">（匿名用户）</font></td>
                     <td width="180">
                     	颜色分类：<font color="#999999">粉色</font> <br />
                         型号：<font color="#999999">50ml</font>
@@ -383,13 +383,13 @@
     <div id="MyDiv" class="white_content">             
         <div class="white_d">
             <div class="notice_t">
-                <span class="fr" style="margin-top:10px; cursor:pointer;" onclick="CloseDiv('MyDiv','fade')"><img src="images/close.gif" /></span>
+                <span class="fr" style="margin-top:10px; cursor:pointer;" onclick="CloseDiv('MyDiv','fade')"><img src="${pageContext.request.contextPath}/images/close.gif" /></span>
             </div>
             <div class="notice_c">
            		
                 <table border="0" align="center" style="margin-top:;" cellspacing="0" cellpadding="0">
                   <tr valign="top">
-                    <td width="40"><img src="images/suc.png" /></td>
+                    <td width="40"><img src="${pageContext.request.contextPath}/images/suc.png" /></td>
                     <td>
                     	<span style="color:#3e3e3e; font-size:18px; font-weight:bold;">您已成功收藏该商品</span><br />
                     	<a href="#">查看我的关注 >></a>
@@ -412,13 +412,13 @@
     <div id="MyDiv1" class="white_content">             
         <div class="white_d">
             <div class="notice_t">
-                <span class="fr" style="margin-top:10px; cursor:pointer;" onclick="CloseDiv_1('MyDiv1','fade1')"><img src="images/close.gif" /></span>
+                <span class="fr" style="margin-top:10px; cursor:pointer;" onclick="CloseDiv_1('MyDiv1','fade1')"><img src="${pageContext.request.contextPath}/images/close.gif" /></span>
             </div>
             <div class="notice_c">
            		
                 <table border="0" align="center" style="margin-top:;" cellspacing="0" cellpadding="0">
                   <tr valign="top">
-                    <td width="40"><img src="images/suc.png" /></td>
+                    <td width="40"><img src="${pageContext.request.contextPath}/images/suc.png" /></td>
                     <td>
                     	<span style="color:#3e3e3e; font-size:18px; font-weight:bold;">宝贝已成功添加到购物车</span><br />
                     	
@@ -482,9 +482,9 @@ alert('非法录入');
 return;
 }
 	jQuery.ajax({
-		"url" : path+"/servlet/BuyCar",
+		"url" : path+"/shopping/buycar",
 		"type" : "post",
-		"data" : {"id":id,"quntity":quntity},
+		"data" : {"tid":id,"quntity":quntity},
 		"dataType" : "html",
 		"success" : function(result) {
 			jQuery("#sercarch").html(result);
@@ -492,7 +492,7 @@ return;
 	}
 )
 jQuery.ajax({
-		"url" : path+"/servlet/BuyCar1",
+		"url" : path+"/shopping/buycar1",
 		"type" : "post",
 		"data" : null,
 		"dataType" : "html",
@@ -504,7 +504,7 @@ jQuery.ajax({
 ShowDiv_1('MyDiv1','fade1');
 }
 </script>
-<script src="js/Car.js"></script>
+<script src="${pageContext.request.contextPath}/js/Car.js"></script>
 </body>
 
 

@@ -158,7 +158,7 @@
                 <ul class="cate_list">
                     <c:forEach items="${pagehelper.list}" var="list" varStatus="i">
                         <li>
-                            <div class="img"><a href="${pageContext.request.contextPath}/servlet/Product?id=${list.tid}"><img
+                            <div class="img"><a href="${pageContext.request.contextPath}/doproduct/product?tid=${list.tid}"><img
                                     src="${pageContext.request.contextPath}${filepath}${list.filename}" width="210"
                                     height="185"/></a></div>
                             <div class="price">
@@ -191,8 +191,8 @@
                         </c:if>
                     </c:forEach>
                     <c:if test="${!pagehelper.isLastPage}">
-                        <a href="${pageContext.request.contextPath}/billController/allbill?pageno=${pagehelper.nextPage}&&productid=${pcid}&&proName=${proName}">下一页</a>
-                        <a href="${pageContext.request.contextPath}/billController/allbill?pageno=${pagehelper.lastPage}&&productid=${pcid}&&proName=${proName}">最后一页</a>
+                        <a href="${pageContext.request.contextPath}/doproduct/queryproductList?pageno=${pagehelper.nextPage}&&productid=${pcid}&&proName=${proName}">下一页</a>
+                        <a href="${pageContext.request.contextPath}/doproduct/queryproductList?pageno=${pagehelper.lastPage}&&productid=${pcid}&&proName=${proName}">最后一页</a>
                     </c:if>
                 </div>
             </div>

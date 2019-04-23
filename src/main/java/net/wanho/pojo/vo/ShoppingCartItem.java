@@ -7,8 +7,8 @@ import java.io.Serializable;
 public class ShoppingCartItem implements Serializable {
 
 	private    Product   product;
-    private     int    quantity;
-    private     float     cost;
+    private     Long    quantity;
+    private     Float     cost;
 	public Product getProduct() {
 		return product;
 	}
@@ -16,10 +16,10 @@ public class ShoppingCartItem implements Serializable {
 		this.product = product;
 	}
 	
-	public int getQuantity() {
+	public Long getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(int quantity) {
+	public void setQuantity(Long quantity) {
 		this.quantity = quantity;
 	}
 	public float getCost() {
@@ -28,7 +28,7 @@ public class ShoppingCartItem implements Serializable {
 	public void setCost(float cost) {
 		this.cost = cost;
 	}
-	public ShoppingCartItem(Product product, Integer quantity, float cost) {
+	public ShoppingCartItem(Product product, Long quantity, Float cost) {
 		super();
 		this.product = product;
 		this.quantity = quantity;

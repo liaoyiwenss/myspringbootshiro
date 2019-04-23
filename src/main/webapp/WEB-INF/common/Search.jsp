@@ -51,7 +51,7 @@
             
               <c:forEach items="${cartlist.items}" var="item" varStatus="i">
               <li>
-               <div class="img"><a><img src="${pageContext.request.contextPath}${filepath}${item.product.fileName}" width="58" height="58" /></a></div>
+               <div class="img"><a><img src="${pageContext.request.contextPath}${filepath}${item.product.filename}" width="58" height="58" /></a></div>
                <div class="name"><a>${item.product.name}</a></div>
                <div class="price"><font color="#ff4e00">
               

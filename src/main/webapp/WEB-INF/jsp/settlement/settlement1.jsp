@@ -84,7 +84,7 @@ function removeCart(index){
 jQuery.ajax({
 		"url" : path+"/servlet/DeleteProduct1",
 		"type" : "post",
-		"data" : {"id":index},
+		"data" : {"tid":index},
 		"dataType" : "html",
 		"success" : function(result) {
 			
@@ -95,7 +95,7 @@ jQuery.ajax({
 
 
 jQuery.ajax({
-		"url" : path+"/servlet/BuyCar1",
+		"url" : path+"/shopping/buycar1",
 		"type" : "post",
 		"data" : null,
 		"dataType" : "html",
@@ -115,7 +115,7 @@ function addQuantity(obj,id,quntity){
 	jQuery.ajax({
 		"url" : path+"/servlet/AddProduct",
 		"type" : "post",
-		"data" : {"id":id,"quntity":quntity+1},
+		"data" : {"tid":id,"quntity":quntity+1},
 		"dataType" : "html",
 		"success" : function(result) {
 			
@@ -126,9 +126,9 @@ function addQuantity(obj,id,quntity){
 
 
 jQuery.ajax({
-		"url" : path+"/servlet/BuyCar1",
+		"url" : path+"/shopping/buycar1",
 		"type" : "post",
-		"data" : {"id":id,"quntity":quntity},
+		"data" : {"tid":id,"quntity":quntity},
 		"dataType" : "html",
 		"success" : function(result) {
 			
@@ -145,7 +145,7 @@ function subQuantity(obj,id,quntity){
 	jQuery.ajax({
 		"url" : path+"/servlet/AddProduct",
 		"type" : "post",
-		"data" : {"id":id,"quntity":quntity-1},
+		"data" : {"tid":id,"quntity":quntity-1},
 		"dataType" : "html",
 		"success" : function(result) {
 			
@@ -156,9 +156,9 @@ function subQuantity(obj,id,quntity){
 
 
 jQuery.ajax({
-		"url" : path+"/servlet/BuyCar1",
+		"url" : path+"/shopping/buycar1",
 		"type" : "post",
-		"data" : {"id":id,"quntity":quntity},
+		"data" : {"tid":id,"quntity":quntity},
 		"dataType" : "html",
 		"success" : function(result) {
 			
@@ -178,7 +178,7 @@ return;
 jQuery.ajax({
 		"url" : path+"/servlet/AddProduct",
 		"type" : "post",
-		"data" : {"id":id,"quntity":vvs},
+		"data" : {"tid":id,"quntity":vvs},
 		"dataType" : "html",
 		"success" : function(result) {
 			jQuery("#settlement").html(result);
@@ -186,7 +186,7 @@ jQuery.ajax({
 	}
 )
 jQuery.ajax({
-		"url" : path+"/servlet/BuyCar1",
+		"url" : path+"/shopping/buycar1",
 		"type" : "post",
 		"data" : null,
 		"dataType" : "html",

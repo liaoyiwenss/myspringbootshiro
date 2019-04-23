@@ -882,6 +882,7 @@
 	</script>
 
 	   <script type="text/javascript">
+		   var path="${pageContext.request.contextPath }";
     jQuery.ajax({
 		"url" : path+"/show/Temp",
 		"type" : "post",

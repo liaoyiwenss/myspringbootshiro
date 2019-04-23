@@ -88,4 +88,9 @@ public class ShowController {
     public String CategoryList(){
         return "CategoryList";
     }
+
+    @RequestMapping("Product")
+    public String Product(){
+        return "Product";
+    }
 }

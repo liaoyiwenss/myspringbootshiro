@@ -24,9 +24,9 @@ function ShowDiv_1(show_div,bg_div){
 
 function add(id,quntity){
 	jQuery.ajax({
-		"url" : path+"/servlet/BuyCar",
+		"url" : path+"/shopping/buycar",
 		"type" : "post",
-		"data" : {"id":id,"quntity":quntity},
+		"data" : {"tid":id,"quntity":quntity},
 		"dataType" : "html",
 		"success" : function(result) {
 			jQuery("#sercarch").html(result);

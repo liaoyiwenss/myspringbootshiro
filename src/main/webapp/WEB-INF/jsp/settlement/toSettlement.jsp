@@ -18,16 +18,16 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/page/js/paper_ban.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/page/js/baby_ban.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <%@ include file="/common/header.jsp" %>
+    <%@ include file="../../common/header.jsp" %>
     <script src="${pageContext.request.contextPath}/page/js/Car.js"></script>
-    <title>易买网</title>
+    <title>MM网</title>
 </head>
 <body>
 <!--Begin Header Begin-->
 <div id="searchBar">
 
 	
-    <%@ include file="/common/Search.jsp" %>
+    <%@ include file="../../common/Search.jsp" %>
     
     
 </div>
@@ -36,7 +36,7 @@
 <div class="menu_bg">
     <div class="menu">
         <!--Begin 商品分类详情 Begin-->
-        <%@ include file="/common/LeftBar.jsp" %>
+        <%@ include file="../../common/LeftBar.jsp" %>
         <!--End 商品分类详情 End-->
     </div>
 </div>
@@ -48,7 +48,7 @@
     
     </div>
    
-    <%@ include file="/common/footer.jsp" %>
+    <%@ include file="../../common/footer.jsp" %>
 </div>
 </body>
 </html>

@@ -37,7 +37,7 @@
     
     <script type="text/javascript">
     jQuery.ajax({
-		"url" : path+"/servlet/BuyCar1",
+		"url" : path+"/shopping/buycar1",
 		"type" : "post",
 		"data" : null,
 		"dataType" : "html",
