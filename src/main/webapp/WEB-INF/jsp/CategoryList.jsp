@@ -179,20 +179,20 @@
 
                 <div class="pages" style="text-align:center;">
                     <c:if test="${!pagehelper.isFirstPage}">
-                        <a href="${pageContext.request.contextPath}/doproduct/queryproductList?pageno=${pagehelper.firstPage}&&productid=${pcid}">首页</a>
-                        <a href="${pageContext.request.contextPath}/doproduct/queryproductList?pageno=${pagehelper.prePage}&&productid=${pcid}">上一页</a>
+                        <a href="${pageContext.request.contextPath}/doproduct/queryproductList?pageno=${pagehelper.firstPage}&&productid=${pcid}&&proName=${proName}">首页</a>
+                        <a href="${pageContext.request.contextPath}/doproduct/queryproductList?pageno=${pagehelper.prePage}&&productid=${pcid}&&proName=${proName}">上一页</a>
                     </c:if>
                     <c:forEach items="${pagehelper.navigatepageNums}" var="navigatepageNum">
                         <c:if test="${navigatepageNum==pagehelper.pageNum}">
-                            <a href="${pageContext.request.contextPath}/doproduct/queryproductList?pageno=${navigatepageNum}&&productid=${pcid}">${navigatepageNum}</a>
+                            <a href="${pageContext.request.contextPath}/doproduct/queryproductList?pageno=${navigatepageNum}&&productid=${pcid}&&proName=${proName}">${navigatepageNum}</a>
                         </c:if>
                         <c:if test="${navigatepageNum!=pagehelper.pageNum}">
-                            <a href="${pageContext.request.contextPath}/doproduct/queryproductList?pageno=${navigatepageNum}&&productid=${pcid}">${navigatepageNum}</a>
+                            <a href="${pageContext.request.contextPath}/doproduct/queryproductList?pageno=${navigatepageNum}&&productid=${pcid}&&proName=${proName}">${navigatepageNum}</a>
                         </c:if>
                     </c:forEach>
                     <c:if test="${!pagehelper.isLastPage}">
-                        <a href="${pageContext.request.contextPath}/billController/allbill?pageno=${pagehelper.nextPage}&&productid=${pcid}">下一页</a>
-                        <a href="${pageContext.request.contextPath}/billController/allbill?pageno=${pagehelper.lastPage}&&productid=${pcid}">最后一页</a>
+                        <a href="${pageContext.request.contextPath}/billController/allbill?pageno=${pagehelper.nextPage}&&productid=${pcid}&&proName=${proName}">下一页</a>
+                        <a href="${pageContext.request.contextPath}/billController/allbill?pageno=${pagehelper.lastPage}&&productid=${pcid}&&proName=${proName}">最后一页</a>
                     </c:if>
                 </div>
             </div>

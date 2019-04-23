@@ -137,33 +137,8 @@ public class UserController {
         String salt= UUID.randomUUID().toString();
         user.setPassword(userService.shiroMD5(user.getPassword(),salt));
         user.setSalt(salt);
-        Role role=new Role();
-        Permission permission=new Permission();
-       /* if(type==0)
-        {
-            role.setRolename("admin");
-            permission.setPermissionname("user:*");
-        }else
-        {*/
-            role.setRolename("user");
-            permission.setPermissionname("user:query");
-        /*}*/
-         userService.insert(user);
-
-        roleService.insert(role);
-
-        permissonService.insert(permission);
-
-
-        Userrole userrole=new Userrole();
-        userrole.setUserid(user.getTid());
-        userrole.setRoleid(role.getTid());
-        userRoleService.insert(userrole);
-        Rolepermission rolepermission=new Rolepermission();
-        rolepermission.setRoleid(role.getTid());
-        rolepermission.setPermissionid(permission.getTid());
-        rolePermissonService.insert(rolepermission);
-        session.setAttribute("users",user);
+        User user1 = userService.addUser(user);
+        session.setAttribute("users",user1);
         return "redirect:/show/Index";
     }
 

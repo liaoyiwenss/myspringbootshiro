@@ -1,7 +1,7 @@
 package net.wanho.service.user.impl;
 
-import net.wanho.mapper.UserMapper;
-import net.wanho.pojo.User;
+import net.wanho.mapper.*;
+import net.wanho.pojo.*;
 import net.wanho.service.user.UserService;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
@@ -13,6 +13,18 @@ public class UserServiceimpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private RoleMapper roleMapper;
+
+    @Autowired
+    private PermissionMapper permissionMapper;
+
+    @Autowired
+    private UserroleMapper userroleMapper;
+
+    @Autowired
+    private RolepermissionMapper rolepermissionMapper;
 
     @Override
     public int deleteByPrimaryKey(Long tid) {
@@ -56,5 +68,36 @@ public class UserServiceimpl implements UserService {
         int hashIterations=2;
         Object object = new SimpleHash(algorithmName, password, bytes, hashIterations);
         return object.toString();
+    }
+
+
+    public User addUser(User user){
+        Role role=new Role();
+        Permission permission=new Permission();
+       /* if(type==0)
+        {
+            role.setRolename("admin");
+            permission.setPermissionname("user:*");
+        }else
+        {*/
+        role.setRolename("user");
+        permission.setPermissionname("user:query");
+        /*}*/
+        userMapper.insert(user);
+
+        roleMapper.insert(role);
+
+        permissionMapper.insert(permission);
+
+
+        Userrole userrole=new Userrole();
+        userrole.setUserid(user.getTid());
+        userrole.setRoleid(role.getTid());
+        userroleMapper.insert(userrole);
+        Rolepermission rolepermission=new Rolepermission();
+        rolepermission.setRoleid(role.getTid());
+        rolepermission.setPermissionid(permission.getTid());
+        rolepermissionMapper.insert(rolepermission);
+        return user;
     }
 }

@@ -8,4 +8,6 @@ public interface UserService extends BaseService<User> {
     User queryexUser(User user);
 
     String shiroMD5(String password,String salt);
+
+    public User addUser(User user);
 }
