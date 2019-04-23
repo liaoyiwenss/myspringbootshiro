@@ -15,7 +15,7 @@ public class Orderdetail {
 
     private Long productid;
 
-    private Integer quantity;
+    private Long quantity;
 
     private Float cost;
 
@@ -67,11 +67,11 @@ public class Orderdetail {
         this.productid = productid;
     }
 
-    public Integer getQuantity() {
+    public Long getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(Long quantity) {
         this.quantity = quantity;
     }
 

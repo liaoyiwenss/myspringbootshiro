@@ -15,7 +15,8 @@
     <result column="mobile" property="mobile" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="INTEGER" />
     <result column="salt" property="salt" jdbcType="VARCHAR" />
-   <collection property="roles" ofType="net.wanho.pojo.Role" select="net.wanho.mapper.RoleMapper.selectUserandRole" column="tid"/>
+    <collection property="roles" ofType="net.wanho.pojo.Role" select="net.wanho.mapper.RoleMapper.selectUserandRole" column="tid"/>
+    <collection property="addresses" ofType="net.wanho.pojo.Useraddress" select="net.wanho.mapper.UseraddressMapper.queryaddressbyuserId" column="tid"/>
   </resultMap>
 
   <sql id="Base_Column_List" >

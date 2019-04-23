@@ -20,7 +20,13 @@
     from useraddress
     where tid = #{tid,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    <select id="queryaddressbyuserId" resultType="net.wanho.pojo.Useraddress">
+      select
+      <include refid="Base_Column_List" />
+      from useraddress
+      where userid = #{userid,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from useraddress
     where tid = #{tid,jdbcType=BIGINT}
   </delete>

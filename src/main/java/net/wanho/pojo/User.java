@@ -32,6 +32,16 @@ public class User {
 
     private List<Role> roles;
 
+    private List<Useraddress> addresses;
+
+    public List<Useraddress> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Useraddress> addresses) {
+        this.addresses = addresses;
+    }
+
     public List<Role> getRoles() {
         return roles;
     }

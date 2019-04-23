@@ -17,7 +17,7 @@ public class Product {
 
     private Float price;
 
-    private Integer stock;
+    private Long stock;
 
     private Long categorylevel1id;
 
@@ -85,11 +85,11 @@ public class Product {
         this.price = price;
     }
 
-    public Integer getStock() {
+    public Long getStock() {
         return stock;
     }
 
-    public void setStock(Integer stock) {
+    public void setStock(Long stock) {
         this.stock = stock;
     }
 

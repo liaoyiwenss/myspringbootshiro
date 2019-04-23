@@ -81,7 +81,7 @@
 function removeCart(index){
 
 jQuery.ajax({
-		"url" : path+"/servlet/DeleteProduct1",
+		"url" : path+"/shopping/removeProduct",
 		"type" : "post",
 		"data" : {"tid":index},
 		"dataType" : "html",
@@ -112,7 +112,7 @@ function addQuantity(obj,id,quntity){
 
 	
 	jQuery.ajax({
-		"url" : path+"/servlet/AddProduct",
+		"url" : path+"/shopping/addProduct",
 		"type" : "post",
 		"data" : {"tid":id,"quntity":quntity+1},
 		"dataType" : "html",
@@ -142,7 +142,7 @@ function subQuantity(obj,id,quntity){
 
 	
 	jQuery.ajax({
-		"url" : path+"/servlet/AddProduct",
+		"url" : path+"/shopping/addProduct",
 		"type" : "post",
 		"data" : {"tid":id,"quntity":quntity-1},
 		"dataType" : "html",

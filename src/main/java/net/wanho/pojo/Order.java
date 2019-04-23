@@ -1,6 +1,7 @@
 package net.wanho.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 public class Order {
     private Long tid;
@@ -11,7 +12,7 @@ public class Order {
 
     private Date modifytime;
 
-    private Integer userid;
+    private Long userid;
 
     private String loginname;
 
@@ -20,6 +21,16 @@ public class Order {
     private Float cost;
 
     private String serialnumber;
+
+    private List<Orderdetail> orderDetailList;
+
+    public List<Orderdetail> getOrderDetailList() {
+        return orderDetailList;
+    }
+
+    public void setOrderDetailList(List<Orderdetail> orderDetailList) {
+        this.orderDetailList = orderDetailList;
+    }
 
     public Long getTid() {
         return tid;
@@ -53,11 +64,11 @@ public class Order {
         this.modifytime = modifytime;
     }
 
-    public Integer getUserid() {
+    public Long getUserid() {
         return userid;
     }
 
-    public void setUserid(Integer userid) {
+    public void setUserid(Long userid) {
         this.userid = userid;
     }
 
