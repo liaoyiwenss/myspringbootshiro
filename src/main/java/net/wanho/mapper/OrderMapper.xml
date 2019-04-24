@@ -11,6 +11,7 @@
     <result column="useraddress" property="useraddress" jdbcType="VARCHAR" />
     <result column="cost" property="cost" jdbcType="REAL" />
     <result column="serialnumber" property="serialnumber" jdbcType="VARCHAR" />
+    <collection property="orderDetailList" ofType="net.wanho.pojo.Orderdetail" select="net.wanho.mapper.OrderMapper.queryorderdetailbyOrderid" column="tid"/>
   </resultMap>
   <sql id="Base_Column_List" >
     tid, createtime, logicaldelete, modifytime, userid, loginname, useraddress, cost, 
@@ -19,15 +20,26 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from order
+    from `order`
     where tid = #{tid,jdbcType=BIGINT}
   </select>
+  <select id="queryorderbyuserId" resultType="net.wanho.pojo.Order">
+    select
+    <include refid="Base_Column_List" />
+    from `order`
+    <where>
+      <if test="userid!=null">
+        and userid = #{userid,jdbcType=BIGINT}
+      </if>
+    </where>
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from order
+    delete from `order`
     where tid = #{tid,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="net.wanho.pojo.Order"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
-    insert into order (createtime, logicaldelete,
+    insert into `order` (createtime, logicaldelete,
       modifytime, userid, loginname, 
       useraddress, cost, serialnumber
       )
@@ -37,7 +49,7 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="net.wanho.pojo.Order"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
-    insert into order
+    insert into `order`
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="tid != null" >
         tid,
@@ -98,7 +110,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="net.wanho.pojo.Order" >
-    update order
+    update `order`
     <set >
       <if test="1 == 1" >
         modifytime = now(),
@@ -125,7 +137,7 @@
     where tid = #{tid,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="net.wanho.pojo.Order" >
-    update order
+    update `order`
     set modifytime = now(),
       logicaldelete = #{logicaldelete,jdbcType=BIGINT},
       userid = #{userid,jdbcType=INTEGER},

@@ -19,6 +19,16 @@ public class Orderdetail {
 
     private Float cost;
 
+    private Product product;
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
     public Long getTid() {
         return tid;
     }

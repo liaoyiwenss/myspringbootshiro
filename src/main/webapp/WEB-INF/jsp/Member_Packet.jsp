@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
     <!--[if IE 6]>
     <script src="js/iepng.js" type="text/javascript"></script>
         <script type="text/javascript">
@@ -12,10 +12,10 @@
         </script>
     <![endif]-->
         
-    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="js/menu.js"></script>    
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/menu.js"></script>
         
-	<script type="text/javascript" src="js/select.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/select.js"></script>
         
     
 <title>liaoyiwen</title>
@@ -36,7 +36,7 @@
             
             
             
-         <c:forEach items="${pages.list}" var="list">
+         <c:forEach items="${pagehelper.list}" var="list">
          
          
            
@@ -44,9 +44,9 @@
         <tbody>
         
         <tr style="background:#bababa">
-          <td width="20%">用户名：${list.loginName }</td>
-          <td width="40%">订单号：${list.serialNumber }</td>
-          <td width="15%">地址：${list.userAddress }</td>
+          <td width="20%">用户名：${list.loginname }</td>
+          <td width="40%">订单号：${list.serialnumber }</td>
+          <td width="15%">地址：${list.useraddress }</td>
           <td width="15%">价格：${list.cost}</td>
         </tr>
         <tr>
@@ -58,12 +58,12 @@
         <c:forEach items="${list.orderDetailList}" var="temp">
           <tr>
             <td>
-              <a href="${pageContext.request.contextPath}/Product?action=queryProductDeatil&id=${temp.product.id}" target="_blank">
+              <a href="${pageContext.request.contextPath}/Product?action=queryProductDeatil&id=${temp.product.tid}" target="_blank">
               ${temp.product.name}
               </a>
             </td>
             <td>
-              <img src="${pageContext.request.contextPath}/files/${temp.product.fileName}" width="50" height="50"/>
+              <img src="${pageContext.request.contextPath}/files/${temp.product.filename}" width="50" height="50"/>
             </td>
             <td>${temp.quantity}</td>
             <td>${temp.cost}</td>

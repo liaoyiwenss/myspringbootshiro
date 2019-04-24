@@ -5,7 +5,7 @@
     var contextPath = "${ctx}";
 </script>
 <div class="content mar_20">
-    <img src="${ctx}/page/images/img2.jpg"/>
+    <img src="${ctx}/images/img2.jpg"/>
 </div>
 <div class="content mar_20">
     <div class="two_bg">
@@ -22,7 +22,7 @@
                 <tr>
                     <td>
                         <div class="c_s_img">
-                            <img src="${ctx}/files/${temp.product.fileName}" width="73" height="73"/>
+                            <img src="${ctx}/files/${temp.product.filename}" width="73" height="73"/>
                         </div>
                             ${temp.product.name}
                     </td>
@@ -38,9 +38,9 @@
         <table border="0" class="peo_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
             <tr>
                 <td class="p_td" width="160">用户名称</td>
-                <td width="395">${sessionScope.users.userName}</td>
+                <td width="395">${sessionScope.users.username}</td>
                 <td class="p_td">登录名称</td>
-                <td>${sessionScope.users.loginName}</td>
+                <td>${sessionScope.users.loginname}</td>
             </tr>
             <tr>
                 <td class="p_td">手机</td>
@@ -64,7 +64,7 @@
                                 ${temp.remark}
                             </c:otherwise>
                         </c:choose>
-                        <input type="radio" name="selectAddress" value="${temp.id}">
+                        <input type="radio" name="selectAddress" value="${temp.tid}">
                     </td>
                     <td>
                             ${temp.address}
@@ -90,7 +90,7 @@
             </tr>
             <tr height="70">
                 <td align="right"><a href="javascript:void(0);" onclick="settlement3();"><img
-                        src="${ctx}/page/images/btn_sure.gif"/></a></td>
+                        src="${ctx}/images/btn_sure.gif"/></a></td>
             </tr>
         </table>
     </div>
@@ -99,7 +99,7 @@
     function settlement1(){
     
     jQuery.ajax({
-		"url" : path+"/servlet/BalanceCar",
+		"url" : path+"/shopping/BalanceCar",
 		"type" : "post",
 		"data" : {"index":3},
 		"dataType" : "html",
@@ -142,9 +142,9 @@ alert(remark);
 		}
 	}
 	jQuery.ajax({
-		"url" : path+"/servlet/BalanceCar",
+		"url" : path+"/shopping/BalanceCar",
 		"type" : "post",
-		"data" : {"index":2,"id":id,"address":address,"remark":remark},
+		"data" : {"index":2,"tid":id,"address":address,"remark":remark},
 		"dataType" : "html",
 		"success" : function(result) {
 			

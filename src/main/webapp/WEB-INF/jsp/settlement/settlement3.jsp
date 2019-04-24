@@ -5,7 +5,7 @@
     var contextPath = "${ctx}";
 </script>
 <div class="content mar_20">
-    <img src="${ctx}/page/images/img3.jpg"/>
+    <img src="${ctx}/images/img3.jpg"/>
 </div>
 <div class="content mar_20">
     <!--Begin 银行卡支付 Begin -->
@@ -13,7 +13,7 @@
         <table border="0" style="width:1000px; text-align:center;" cellspacing="0" cellpadding="0">
             <tr height="35">
                 <td style="font-size:18px;">
-                    感谢您在本店购物！您的订单已提交成功，请记住您的订单号: <font color="#ff4e00">${currentOrder.serialNumber}</font>
+                    感谢您在本店购物！您的订单已提交成功，请记住您的订单号: <font color="#ff4e00">${currentOrder.serialnumber}</font>
                 </td>
             </tr>
             <tr>
@@ -24,7 +24,7 @@
             </tr>
             <tr>
                 <td style="padding:20px 0 30px 0; font-family:'宋体';">
-                    收款人信息：全称 ${sessionScope.users.userName} ；地址 ${currentOrder.userAddress} ； <br/>
+                    收款人信息：全称 ${sessionScope.users.username} ；地址 ${currentOrder.useraddress} ； <br/>
                 </td>
             </tr>
             <tr>

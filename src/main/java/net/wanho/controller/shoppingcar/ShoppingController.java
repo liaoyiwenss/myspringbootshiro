@@ -154,7 +154,7 @@ public class ShoppingController {
         {
             ShoppingCartItem shoppingCartItem = items.get(i);
             System.out.println(shoppingCartItem.getProduct().getTid());
-            if(shoppingCartItem.getProduct().getTid()==tid)
+            if(shoppingCartItem.getProduct().getTid().equals(tid))
             {
                 cartlist.setSum(cartlist.getSum()-items.get(i).getCost());
                 items.remove(i);
@@ -175,9 +175,7 @@ public class ShoppingController {
         ShoppingCart cartlist=(ShoppingCart) session.getAttribute("cartlist");
         if(index.equals("1"))
         {
-            List<Useraddress> addresslist = null;
-                System.out.println(user);
-                user.getAddresses();
+            List<Useraddress> addresslist = user.getAddresses();
             session.setAttribute("userAddressList", addresslist);
 
             return "redirect:/show/settlement2";

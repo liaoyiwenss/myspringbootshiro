@@ -10,6 +10,7 @@
     <result column="productid" property="productid" jdbcType="BIGINT" />
     <result column="quantity" property="quantity" jdbcType="INTEGER" />
     <result column="cost" property="cost" jdbcType="REAL" />
+    <association property="product" javaType="net.wanho.pojo.Product" column="tid" select="net.wanho.mapper.ProductMapper.queryProductbtid"></association>
   </resultMap>
   <sql id="Base_Column_List" >
     tid, createtime, logicaldelete, modifytime, orderid, productid, quantity, cost
@@ -20,7 +21,13 @@
     from orderdetail
     where tid = #{tid,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    <select id="queryorderdetailbyOrderid" resultMap="BaseResultMap">
+      select
+      *
+      from orderdetail
+      where orderid = #{orderid,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from orderdetail
     where tid = #{tid,jdbcType=BIGINT}
   </delete>

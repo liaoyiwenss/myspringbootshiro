@@ -26,6 +26,12 @@
     from product
     where tid = #{tid,jdbcType=BIGINT}
   </select>
+  <select id="queryProductbtid" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    *
+    from product
+    where tid = #{tid,jdbcType=BIGINT}
+  </select>
     <select id="selectProductbyEntity" resultType="net.wanho.pojo.Product">
       select
       <include refid="Base_Column_List" />

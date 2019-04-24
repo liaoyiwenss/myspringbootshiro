@@ -426,7 +426,7 @@
                   </tr>
                   <tr height="50" valign="bottom">
                   	<td>&nbsp;</td>
-                    <td><a href="#" class="b_sure">去购物车结算</a><a href="#" class="b_buy">继续购物</a></td>
+                    <td><a href="#" class="b_sure">去购物车结算</a><a href="/images/btn_sure.gif" class="b_buy">继续购物</a></td>
                   </tr>
                 </table>
                     

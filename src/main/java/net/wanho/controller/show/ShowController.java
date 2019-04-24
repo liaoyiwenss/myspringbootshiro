@@ -116,4 +116,9 @@ public class ShowController {
     public String settlement3(){
         return "/settlement/settlement3";
     }
+
+    @RequestMapping("/Member_Packet")
+    public String Member_Packet(){
+        return "/Member_Packet";
+    }
 }

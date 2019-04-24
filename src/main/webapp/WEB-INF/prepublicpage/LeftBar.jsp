@@ -24,9 +24,9 @@
                 <ul>
                 
                 <c:if test="${users.type==1}">
-                	<li><a href="${pageContext.request.contextPath}/servlet/Orderdetail?flag=2">全部订单</a></li>
+                	<li><a href="${pageContext.request.contextPath}/doorder/orderdetail?flag=2">全部订单</a></li>
                 	</c:if>
-                    <li><a href="${pageContext.request.contextPath}/servlet/Orderdetail?flag=1" class="now">我的订单</a></li>
+                    <li><a href="${pageContext.request.contextPath}/doorder/orderdetail?flag=1" class="now">我的订单</a></li>
                 </ul>
             </div>
             <div class="left_m">

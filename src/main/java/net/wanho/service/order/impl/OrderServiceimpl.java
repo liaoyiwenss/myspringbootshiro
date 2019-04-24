@@ -1,5 +1,7 @@
 package net.wanho.service.order.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import net.wanho.mapper.OrderMapper;
 import net.wanho.mapper.OrderdetailMapper;
 import net.wanho.mapper.ProductMapper;
@@ -86,5 +88,15 @@ public class OrderServiceimpl implements OrderService {
             orderMapper.insert(order);
             //添加订单
         return order;
+    }
+
+
+    @Override
+    public PageInfo<Order> queryorderbyuserId(Long userid, Integer start, Integer limit, Integer navigatePages){
+
+        PageHelper.startPage(start, limit);
+        List<Order> orders = orderMapper.queryorderbyuserId(userid);
+        PageInfo<Order> pageinfo=new PageInfo<Order>(orders,navigatePages);
+        return pageinfo;
     }
 }
