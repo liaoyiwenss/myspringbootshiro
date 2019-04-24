@@ -64,9 +64,10 @@ public class OrderServiceimpl implements OrderService {
 
     @Override
     public Order productOrder(Order order, ShoppingCart cartlist){
-        int orderid;
+        long orderid;
             //查询自增序，为插入详情订单做准备
-            orderid = orderMapper.insert(order);;
+            orderMapper.insert(order);
+            orderid=order.getTid();
             List<ShoppingCartItem> items = cartlist.getItems();
             List<Orderdetail> detaillist=new ArrayList<Orderdetail>();
             for(int i=0;i<items.size();i++)
@@ -83,9 +84,8 @@ public class OrderServiceimpl implements OrderService {
                 orderdetailMapper.insert(detail);
                 detaillist.add(detail);
             }
-            order.setOrderDetailList(detaillist);
+            order.setOrderdetaillist(detaillist);
             //把订单详情属性赋给订单
-            orderMapper.insert(order);
             //添加订单
         return order;
     }

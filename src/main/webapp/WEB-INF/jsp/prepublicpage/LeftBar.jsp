@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@include file="../common/common.jsp"%>
+<%@include file="../../common/common.jsp"%>
 <!DOCTYPE jsp PUBLIC "-//W3C//DTD jsp 4.01 Transitional//EN">
 <html>
   <head>

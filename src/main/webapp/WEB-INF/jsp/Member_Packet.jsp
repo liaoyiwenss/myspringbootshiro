@@ -29,7 +29,7 @@
 <div class="i_bg bg_color">
     <!--Begin 用户中心 Begin -->
 	<div class="m_content">
-   		<%@ include file="../prepublicpage/LeftBar.jsp" %>
+   		<%@ include file="prepublicpage/LeftBar.jsp" %>
 		<div class="m_right">
             <p></p>			
             <div class="mem_tit">订单详情</div>
@@ -55,7 +55,7 @@
           <td width="25%">数量</td>
           <td width="25%">价格</td>
         </tr>
-        <c:forEach items="${list.orderDetailList}" var="temp">
+        <c:forEach items="${list.orderdetaillist}" var="temp">
           <tr>
             <td>
               <a href="${pageContext.request.contextPath}/Product?action=queryProductDeatil&id=${temp.product.tid}" target="_blank">
@@ -71,10 +71,8 @@
         </c:forEach>
 		</tbody>
 		</table>
-         
-         
 		 </c:forEach>
-            <%@ include file="../prepublicpage/dividePage.jsp" %>
+            <%@ include file="prepublicpage/dividePage.jsp" %>
         </div>
     </div>
 	<!--End 用户中心 End--> 

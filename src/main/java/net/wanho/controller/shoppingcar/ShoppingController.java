@@ -190,6 +190,15 @@ public class ShoppingController {
             if(tid==-1)
             {
                 useraddressService.insert(useraddress);
+                List<Useraddress> addresseslist = user.getAddresses();
+                if(addresseslist==null)
+                {
+                    addresseslist=new ArrayList<Useraddress>();
+
+                }
+                addresseslist.add(useraddress);
+                user.setAddresses(addresseslist);
+                session.setAttribute("users",user);
             }
             else
             {

@@ -11,7 +11,7 @@
     <result column="useraddress" property="useraddress" jdbcType="VARCHAR" />
     <result column="cost" property="cost" jdbcType="REAL" />
     <result column="serialnumber" property="serialnumber" jdbcType="VARCHAR" />
-    <collection property="orderDetailList" ofType="net.wanho.pojo.Orderdetail" select="net.wanho.mapper.OrderMapper.queryorderdetailbyOrderid" column="tid"/>
+    <collection property="orderdetaillist" ofType="net.wanho.pojo.Orderdetail" select="net.wanho.mapper.OrderdetailMapper.queryorderdetailbyOrderid" column="tid"/>
   </resultMap>
   <sql id="Base_Column_List" >
     tid, createtime, logicaldelete, modifytime, userid, loginname, useraddress, cost, 
@@ -23,15 +23,15 @@
     from `order`
     where tid = #{tid,jdbcType=BIGINT}
   </select>
-  <select id="queryorderbyuserId" resultType="net.wanho.pojo.Order">
+  <select id="queryorderbyuserId" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from `order`
-    <where>
-      <if test="userid!=null">
-        and userid = #{userid,jdbcType=BIGINT}
-      </if>
-    </where>
+      <where>
+        <if test="userid!=null">
+          and userid = #{userid,jdbcType=BIGINT}
+        </if>
+      </where>
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >

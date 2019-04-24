@@ -22,14 +22,14 @@ public class Order {
 
     private String serialnumber;
 
-    private List<Orderdetail> orderDetailList;
+    private List<Orderdetail> orderdetaillist;
 
-    public List<Orderdetail> getOrderDetailList() {
-        return orderDetailList;
+    public List<Orderdetail> getOrderdetaillist() {
+        return orderdetaillist;
     }
 
-    public void setOrderDetailList(List<Orderdetail> orderDetailList) {
-        this.orderDetailList = orderDetailList;
+    public void setOrderdetaillist(List<Orderdetail> orderdetaillist) {
+        this.orderdetaillist = orderdetaillist;
     }
 
     public Long getTid() {
