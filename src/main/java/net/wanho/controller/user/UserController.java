@@ -2,7 +2,7 @@ package net.wanho.controller.user;
 
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
-import net.wanho.pojo.*;
+import net.wanho.pojo.User;
 import net.wanho.service.user.*;
 import net.wanho.utils.RegUtils;
 import org.apache.shiro.SecurityUtils;
@@ -180,7 +180,7 @@ public class UserController {
 
     @RequestMapping("adminaddUser")
     public String adminaddUser(String loginName,String userName,String repPassword,
-                               String identityCode,String email,String mobile,
+                               String identityCode,String email,String mobile,String password,
                                String type,HttpSession session){
 
         User useru=new User();
@@ -190,9 +190,36 @@ public class UserController {
         useru.setEmail(email);
         useru.setMobile(mobile);
         useru.setType(Integer.parseInt(type));
+        useru.setPassword(password);
+        useru.setSex(1);
 
-        userService.addUser(useru);
 
-        return "redirect:/user/getAlluser";
+
+
+        User user = (User) session.getAttribute("user");
+        if(user==null)
+        {
+            String salt= UUID.randomUUID().toString();
+            useru.setPassword(userService.shiroMD5(useru.getPassword(),salt));
+            userService.addUser(useru);
+            session.removeAttribute("user");
+        }
+        else
+        {
+            useru.setTid(user.getTid());
+            userService.updateByPrimaryKey(useru);
+            session.removeAttribute("user");
+        }
+
+        return "redirect:/douser/getAlluser";
+    }
+
+
+    @RequestMapping("updateUser")
+    public String updateUser(Long tid,HttpSession session){
+
+        User users = userService.selectByPrimaryKey(tid);
+        session.setAttribute("user", users);
+        return "redirect:/show/AdminAddUser";
     }
 }

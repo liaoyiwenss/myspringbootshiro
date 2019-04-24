@@ -32,7 +32,7 @@
    		<%@ include file="prepublicpage/LeftBar.jsp" %>
 		<div class="m_right">
             <p></p>
-          <div class="mem_tit">全部用户信息 <input type="button" style="margin-left:600px" onclick="location.href='${pageContext.request.contextPath}/page/AdminAddUser.jsp'" value="增加用户" class="btn_tj" /></div>
+          <div class="mem_tit">全部用户信息 <input type="button" style="margin-left:600px" onclick="location.href='${pageContext.request.contextPath}/show/AdminAddUser'" value="增加用户" class="btn_tj" /></div>
          
    <table border="0" class="order_tab" style="width:930px; text-align:center; margin-bottom:30px;"
                    cellspacing="0" cellpadding="0">
@@ -72,13 +72,13 @@
                         
                          <c:if test="${temp.type==1}">
                         <td colspan="2">
-                            <a href="${pageContext.request.contextPath}/servlet/UpdateUser?id=${temp.tid}">修改</a>
+                            <a href="${pageContext.request.contextPath}/douser/updateUser?tid=${temp.tid}">修改</a>
                         </td>
                           </c:if>
                         
                         <c:if test="${temp.type==0}">
                         <td>
-                            <a href="${pageContext.request.contextPath}/servlet/UpdateUser?id=${temp.tid}">修改</a>
+                            <a href="${pageContext.request.contextPath}/douser/updateUser?tid=${temp.tid}">修改</a>
                         </td>
                         <td>
                            	 <a href="javascript:if(confirm('确认是否删除此用户？')) location='${pageContext.request.contextPath}/servlet/DeleteUser?id=${temp.id}'"  target="_blank">删除</a>

@@ -131,4 +131,9 @@ public class ShowController {
     public String Member_Collect(){
         return "/Member_Collect";
     }
+
+    @RequestMapping("/AdminAddUser")
+    public String AdminAddUser(){
+        return "/AdminAddUser";
+    }
 }
