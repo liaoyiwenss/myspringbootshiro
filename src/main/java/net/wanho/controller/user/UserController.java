@@ -1,6 +1,7 @@
 package net.wanho.controller.user;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageInfo;
 import net.wanho.pojo.*;
 import net.wanho.service.user.*;
 import net.wanho.utils.RegUtils;
@@ -160,5 +161,38 @@ public class UserController {
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
         return "redirect:/show/Login";
+    }
+
+    @RequestMapping("getAlluser")
+    public String getAlluser(Integer pageno,HttpSession session){
+
+        if(pageno==null)
+        {
+            pageno=1;
+        }
+
+        PageInfo<User> pagehelper = userService.queryallUser(pageno, 10,4);
+        session.setAttribute("pagehelper", pagehelper);
+
+        return "redirect:/show/Member_Collect";
+    }
+
+
+    @RequestMapping("adminaddUser")
+    public String adminaddUser(String loginName,String userName,String repPassword,
+                               String identityCode,String email,String mobile,
+                               String type,HttpSession session){
+
+        User useru=new User();
+        useru.setLoginname(loginName);
+        useru.setUsername(userName);
+        useru.setIdentitycode(identityCode);
+        useru.setEmail(email);
+        useru.setMobile(mobile);
+        useru.setType(Integer.parseInt(type));
+
+        userService.addUser(useru);
+
+        return "redirect:/user/getAlluser";
     }
 }

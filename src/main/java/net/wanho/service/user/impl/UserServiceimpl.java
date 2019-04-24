@@ -1,5 +1,7 @@
 package net.wanho.service.user.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import net.wanho.mapper.*;
 import net.wanho.pojo.*;
 import net.wanho.service.user.UserService;
@@ -7,6 +9,8 @@ import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserServiceimpl implements UserService {
@@ -70,34 +74,45 @@ public class UserServiceimpl implements UserService {
         return object.toString();
     }
 
-
+    @Override
     public User addUser(User user){
-        Role role=new Role();
+       /* Role role=new Role();
         Permission permission=new Permission();
-       /* if(type==0)
+       *//* if(type==0)
         {
             role.setRolename("admin");
             permission.setPermissionname("user:*");
         }else
-        {*/
+        {*//*
         role.setRolename("user");
-        permission.setPermissionname("user:query");
+        permission.setPermissionname("user:query");*/
         /*}*/
         userMapper.insert(user);
 
-        roleMapper.insert(role);
+       /* roleMapper.insert(role);
 
-        permissionMapper.insert(permission);
+        permissionMapper.insert(permission);*/
 
 
         Userrole userrole=new Userrole();
         userrole.setUserid(user.getTid());
-        userrole.setRoleid(role.getTid());
+        userrole.setRoleid(3l);
         userroleMapper.insert(userrole);
         Rolepermission rolepermission=new Rolepermission();
-        rolepermission.setRoleid(role.getTid());
-        rolepermission.setPermissionid(permission.getTid());
-        rolepermissionMapper.insert(rolepermission);
+        rolepermission.setRoleid(3l);
+       /* rolepermission.setPermissionid(permission.getTid());
+        rolepermissionMapper.insert(rolepermission);*/
         return user;
+    }
+
+    @Override
+    public PageInfo<User> queryallUser(Integer start,Integer limit,Integer navigatePages) {
+
+        PageHelper.startPage(start, limit);
+
+        List<User> users = userMapper.queryallUser();
+
+        PageInfo<User> pageinfo=new PageInfo<User>(users,navigatePages);
+        return pageinfo;
     }
 }

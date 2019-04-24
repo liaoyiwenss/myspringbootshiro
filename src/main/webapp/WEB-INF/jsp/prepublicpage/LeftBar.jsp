@@ -32,10 +32,10 @@
             <div class="left_m">
             	<div class="left_m_t t_bg2">会员中心</div>
                 <ul>
-                	<li><a href="${pageContext.request.contextPath}/page/Member_User.jsp" >用户信息</a></li>
+                	<li><a href="${pageContext.request.contextPath}/show/Member_User" >用户信息</a></li>
                    
                    <c:if test="${users.type==1}">
-                    <li><a href="${pageContext.request.contextPath}/servlet/AllUser">用户列表</a></li>
+                    <li><a href="${pageContext.request.contextPath}/douser/getAlluser">用户列表</a></li>
                   </c:if>
                 </ul>
             </div>

@@ -121,4 +121,14 @@ public class ShowController {
     public String Member_Packet(){
         return "/Member_Packet";
     }
+
+    @RequestMapping("/Member_User")
+    public String Member_User(){
+        return "/Member_User";
+    }
+
+    @RequestMapping("/Member_Collect")
+    public String Member_Collect(){
+        return "/Member_Collect";
+    }
 }

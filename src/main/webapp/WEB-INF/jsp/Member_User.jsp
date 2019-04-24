@@ -3,18 +3,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
     <!--[if IE 6]>
-    <script src="js/iepng.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/iepng.js" type="text/javascript"></script>
         <script type="text/javascript">
            EvPNG.fix('div, ul, img, li, input, a'); 
         </script>
     <![endif]-->
         
-    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="js/menu.js"></script>    
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/menu.js"></script>
         
-	<script type="text/javascript" src="js/select.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/select.js"></script>
         
     
 <title>liaoyiwen</title>
@@ -28,12 +28,12 @@
 <div class="i_bg bg_color">
     <!--Begin 用户中心 Begin -->
 	<div class="m_content">
-   		<%@ include file="../prepublicpage/LeftBar.jsp" %>
+   		<%@ include file="prepublicpage/LeftBar.jsp" %>
 		<div class="m_right">
         	<div class="m_des">
             	<table border="0" style="width:870px; line-height:22px;" cellspacing="0" cellpadding="0">
                   <tr valign="top">
-                    <td width="115"><img src="images/user.jpg" width="90" height="90" /></td>
+                    <td width="115"><img src="${pageContext.request.contextPath}/images/user.jpg" width="90" height="90" /></td>
                     <td>
                     	<div class="m_user">TRACY</div>
                         <p>
@@ -71,15 +71,15 @@
             <div class="mem_t">账号信息</div>
             <table border="0" class="mon_tab" style="width:870px; margin-bottom:20px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="40%">用户名：<span style="color:#555555;">${users.loginName }</span></td>
-                <td width="60%">真实姓名：<span style="color:#555555;">${users.userName }</span></td>
+                <td width="40%">用户名：<span style="color:#555555;">${users.loginname }</span></td>
+                <td width="60%">真实姓名：<span style="color:#555555;">${users.username }</span></td>
               </tr>
               <tr>
                 <td>电&nbsp; &nbsp; 话：<span style="color:#555555;">${users.mobile}</span></td>
                 <td>邮&nbsp; &nbsp; 箱：<span style="color:#555555;">${users.email}</span></td>
               </tr>
               <tr>
-                <td>身份证号：<span style="color:#555555;">${users.identityCode}</span></td>
+                <td>身份证号：<span style="color:#555555;">${users.identitycode}</span></td>
                 <td>注册时间：<span style="color:#555555;">2015-10-10</span></td>
               </tr>
             </table>
