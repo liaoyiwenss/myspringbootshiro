@@ -22,6 +22,14 @@
     delete from rolepermission
     where tid = #{tid,jdbcType=BIGINT}
   </delete>
+  <delete id="deleteByroleid" parameterType="java.lang.Long" >
+    delete from rolepermission
+    where roleid = #{roleid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteBypermissionid">
+    delete from rolepermission
+    where permissionid = #{permissionid,jdbcType=BIGINT}
+  </delete>
   <insert id="insert" parameterType="net.wanho.pojo.Rolepermission"  useGeneratedKeys="true" keyProperty="tid" keyColumn="tid">
     insert into rolepermission (createtime, logicaldelete,
       modifytime, roleid, permissionid

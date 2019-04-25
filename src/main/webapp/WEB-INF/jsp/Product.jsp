@@ -364,13 +364,9 @@
                     </td>
                   </tr>
                 </table>
-
-                	
-                    
                 <div class="pages">
                     <a href="#" class="p_pre">上一页</a><a href="#" class="cur">1</a><a href="#">2</a><a href="#">3</a>...<a href="#">20</a><a href="#" class="p_pre">下一页</a>
                 </div>
-                
           	</div>
             
             
@@ -416,7 +412,7 @@
             </div>
             <div class="notice_c">
            		
-                <table border="0" align="center" style="margin-top:;" cellspacing="0" cellpadding="0">
+                <table border="0" align="center"  cellspacing="0" cellpadding="0">
                   <tr valign="top">
                     <td width="40"><img src="${pageContext.request.contextPath}/images/suc.png" /></td>
                     <td>

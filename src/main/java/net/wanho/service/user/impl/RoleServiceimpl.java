@@ -1,10 +1,14 @@
 package net.wanho.service.user.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import net.wanho.mapper.RoleMapper;
 import net.wanho.pojo.Role;
 import net.wanho.service.user.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class RoleServiceimpl implements RoleService {
@@ -40,5 +44,18 @@ public class RoleServiceimpl implements RoleService {
     @Override
     public int updateByPrimaryKey(Role record) {
         return roleMapper.updateByPrimaryKey(record);
+    }
+
+
+    @Override
+    public PageInfo<Role> selectallrole(Integer start,Integer limit,Integer navigatePages) {
+
+        PageHelper.startPage(start, limit);
+
+        List<Role> roles =  roleMapper.selectallrole();
+
+        PageInfo<Role> pageinfo=new PageInfo<Role>(roles,navigatePages);
+
+         return pageinfo;
     }
 }

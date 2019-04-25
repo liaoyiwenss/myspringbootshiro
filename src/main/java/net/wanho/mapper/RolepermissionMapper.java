@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RolepermissionMapper extends BaseMapper<Rolepermission> {
+
+    public void deleteByroleid(Long roleid);
+    public void deleteBypermissionid(Long permissionid);
 }

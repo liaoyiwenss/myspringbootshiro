@@ -1,5 +1,7 @@
 package net.wanho.pojo;
 
+import com.alibaba.fastjson.JSON;
+
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +18,16 @@ public class Role {
 
     private List<Permission> permissions;
 
+    private String permissionsJsonString;
+
+
+    public String getPermissionsJsonString() {
+        return   JSON.toJSONString(permissions);
+    }
+
+    public void setPermissionsJsonString(String permissionsJsonString) {
+        this.permissionsJsonString = permissionsJsonString;
+    }
     public List<Permission> getPermissions() {
         return permissions;
     }

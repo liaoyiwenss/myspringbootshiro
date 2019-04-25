@@ -7,7 +7,7 @@
     <result column="logicaldelete" property="logicaldelete" jdbcType="BIGINT" />
     <result column="modifytime" property="modifytime" jdbcType="TIMESTAMP" />
     <result column="rolename" property="rolename" jdbcType="VARCHAR" />
-    <collection property="permissions" ofType="net.wanho.pojo.Permission" select="net.wanho.mapper.PermissionMapper.selectByPrimaryKey" column="tid"/>
+    <collection property="permissions" ofType="net.wanho.pojo.Permission" select="net.wanho.mapper.PermissionMapper.selectRoleandPermission" column="tid"/>
   </resultMap>
   <sql id="Base_Column_List" >
     tid, createtime, logicaldelete, modifytime, rolename
@@ -25,6 +25,11 @@
     from role r
     left join userrole ur on r.tid=ur.roleid
     where userid = #{userid,jdbcType=BIGINT}
+  </select>
+  <select id="selectallrole" resultMap="BaseResultMap">
+    select
+      *
+    from role
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from role

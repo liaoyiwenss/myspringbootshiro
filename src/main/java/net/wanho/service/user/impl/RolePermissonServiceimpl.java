@@ -42,4 +42,14 @@ public class RolePermissonServiceimpl implements RolePermissonService {
     public int updateByPrimaryKey(Rolepermission record) {
         return rolepermissionMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public void deleteByroleid(Long roleid) {
+        rolepermissionMapper.deleteByroleid(roleid);
+    }
+
+    @Override
+    public void deleteBypermissionid(Long permissionid) {
+        rolepermissionMapper.deleteBypermissionid(permissionid);
+    }
 }

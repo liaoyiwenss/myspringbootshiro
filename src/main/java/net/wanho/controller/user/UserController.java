@@ -200,6 +200,7 @@ public class UserController {
         if(user==null)
         {
             String salt= UUID.randomUUID().toString();
+            useru.setSalt(salt);
             useru.setPassword(userService.shiroMD5(useru.getPassword(),salt));
             userService.addUser(useru);
             session.removeAttribute("user");

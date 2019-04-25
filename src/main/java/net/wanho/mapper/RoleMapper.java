@@ -8,4 +8,6 @@ import java.util.List;
 @Repository
 public interface RoleMapper extends BaseMapper<Role> {
     public List<Role> selectUserandRole(Long userid);
+
+    public List<Role> selectallrole();
 }

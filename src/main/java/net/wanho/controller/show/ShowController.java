@@ -136,4 +136,10 @@ public class ShowController {
     public String AdminAddUser(){
         return "/AdminAddUser";
     }
+
+    @RequestMapping("permissionManager")
+    public String permissionManager(){
+
+        return "/permissionManager";
+    }
 }

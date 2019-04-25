@@ -6,6 +6,9 @@ import net.wanho.service.user.PermissonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 @Service
 public class PermissonServiceimpl implements PermissonService {
 
@@ -40,5 +43,10 @@ public class PermissonServiceimpl implements PermissonService {
     @Override
     public int updateByPrimaryKey(Permission record) {
         return permissionMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public List<Map<String,Object>> selectAllPermission(){
+        return permissionMapper.selectAllPermission();
     }
 }
