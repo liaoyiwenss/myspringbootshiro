@@ -70,21 +70,14 @@
                         </td>
                         
                         
-                         <c:if test="${temp.type==1}">
-                        <td colspan="2">
-                            <a href="${pageContext.request.contextPath}/douser/updateUser?tid=${temp.tid}">修改</a>
-                        </td>
-                          </c:if>
-                        
-                        <c:if test="${temp.type==0}">
+
                         <td>
                             <a href="${pageContext.request.contextPath}/douser/updateUser?tid=${temp.tid}">修改</a>
                         </td>
                         <td>
-                           	 <a href="javascript:if(confirm('确认是否删除此用户？')) location='${pageContext.request.contextPath}/servlet/DeleteUser?id=${temp.id}'"  target="_blank">删除</a>
+                           	 <a href="javascript:if(confirm('确认是否删除此用户？')) location='${pageContext.request.contextPath}/douser/deleteuser?tid=${temp.tid}'"  target="_blank">删除</a>
                         </td>
-                          </c:if>
-                        
+
                     </tr>
                 </c:forEach>
                 </tbody>

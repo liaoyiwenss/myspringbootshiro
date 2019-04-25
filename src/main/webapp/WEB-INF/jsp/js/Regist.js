@@ -141,7 +141,7 @@ $("#registerbutton").click(function () {
         "success": function (result) {
             console.log(result);
             debugger
-            if (result == true) {
+            if (result) {
                 $("#registerfrom").submit();
             } else {
                 debugger

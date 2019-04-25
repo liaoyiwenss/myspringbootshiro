@@ -215,6 +215,11 @@ public class UserController {
         return "redirect:/douser/getAlluser";
     }
 
+    @RequestMapping("deleteuser")
+    public String deleteuser(Long tid){
+        userService.deleteByPrimaryKey(tid);
+        return "redirect:/douser/getAlluser";
+    }
 
     @RequestMapping("updateUser")
     public String updateUser(Long tid,HttpSession session){
