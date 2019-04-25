@@ -74,7 +74,7 @@
               </tr>
               <tr height="60">
               	<td>&nbsp;</td>
-                <td><input type="submit" value="登录" class="log_btn" /></td>
+                <td><input id="loginbutton" type="button" value="登录" class="log_btn" /></td>
               </tr>
             </table>
             </form>
@@ -89,41 +89,54 @@
         <img src="${pageContext.request.contextPath}/images/b_1.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_2.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_3.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_4.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_5.gif" width="98" height="33" /><img src="${pageContext.request.contextPath}/images/b_6.gif" width="98" height="33" />
     </div>    	
 </div>
-<!--End Footer End -->    
+<!--Begin 弹出层-加入购物车 Begin-->
+<div id="fade1" class="black_overlay"></div>
+<div id="MyDiv1" class="white_content">
+    <div class="white_d">
+        <div class="notice_t">
+            <span class="fr" style="margin-top:10px; cursor:pointer;position:relative;left:400px" onclick="CloseDiv_1('MyDiv1','fade1')"><img src="${pageContext.request.contextPath}/static/img/close.gif" /></span>
+        </div>
+        <div class="notice_c">
 
+            <table border="0" align="center" style="margin-top:10px;" cellspacing="0" cellpadding="0">
+                <tr valign="top">
+                    <td width="40" style="top:30px"><img src="${pageContext.request.contextPath}/static/img/suc.png" /></td>
+                    <td>
+                        <span id="message" style="color:#3e3e3e; font-size:18px; font-weight:bold;"></span><br />
+                    </td>
+                </tr>
+                <tr height="50" valign="bottom">
+                    <td>&nbsp;</td>
+                    <td><a href="#"  class="b_sure">xxxxx</a><a href="#" class="b_buy">yyyyy</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<!--End Footer End -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jsonHandler.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}//js/alerts.js"></script>
 </body>
 <script>
-
-		
-
-	
-
-    $(".log_btn").click(function () {
-        var u = $(" :text").get(0);
-        var u2 = $(" :password").get(0);
-        if (u.validity.valueMissing == true) {
-            u.setCustomValidity("用户名不能为空");
-        }else if (u2.validity.valueMissing == true) {
-            u2.setCustomValidity("密码不能为空");
-        }
-    });
-
-
-
-
-
-/*   $.ajax({
-						"url" : "${pageContext.request.contextPath}/servlet/Login",
-						"type" : "post",
-						"data" : {"username":u,"password":u2},
-						"dataType" : "Json",
-						"success" : function(result) {
-							alert(result.name);
-						}
-					})
-        } */
-
-
+    $("#loginbutton").click(function () {
+        var json = $("#loginbutton").serializeObject();
+        $.ajax({
+            "url": path + "/douser/toRegister",
+            "type": "post",
+            "data": json,
+            // "dataType": "Json",
+            "success": function (result) {
+                console.log(result);
+                debugger
+                if (result) {
+                    $("#registerfrom").submit();
+                } else {
+                    $("#message").html(result);
+                    ShowDiv_1('MyDiv1','fade1');
+                }
+            }
+        })
+    })
 </script>
 
 <!--[if IE 6]>
