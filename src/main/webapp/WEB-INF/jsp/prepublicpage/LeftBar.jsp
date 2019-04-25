@@ -37,6 +37,9 @@
                    <c:if test="${users.type==1}">
                     <li><a href="${pageContext.request.contextPath}/douser/getAlluser">用户列表</a></li>
                   </c:if>
+                    <c:if test="${users.type==1}">
+                        <li><a href="${pageContext.request.contextPath}/douser/getAlluser">用户列表</a></li>
+                    </c:if>
                 </ul>
             </div>
             <div class="left_m">
