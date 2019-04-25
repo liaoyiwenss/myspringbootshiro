@@ -139,7 +139,11 @@ public class ShowController {
 
     @RequestMapping("permissionManager")
     public String permissionManager(){
-
         return "/permissionManager";
+    }
+
+    @RequestMapping("AddRole")
+    public String AddRole(){
+        return "/AddRole";
     }
 }

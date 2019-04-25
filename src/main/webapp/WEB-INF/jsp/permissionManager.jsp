@@ -36,7 +36,7 @@
         <%@ include file="prepublicpage/LeftBar.jsp" %>
         <div class="m_right">
             <p></p>
-            <div class="mem_tit">全部角色信息 <input type="button" style="margin-left:600px" onclick="location.href='${pageContext.request.contextPath}/show/AdminAddUser'" value="增加用户" class="btn_tj" /></div>
+            <div class="mem_tit">全部角色信息 <input type="button" style="margin-left:600px" onclick="location.href='${pageContext.request.contextPath}/show/AddRole'" value="增加角色" class="btn_tj" /></div>
 
             <table id="roletable" border="0" class="order_tab" style="width:930px; text-align:center; margin-bottom:30px;"
                    cellspacing="0" cellpadding="0">
@@ -60,7 +60,7 @@
                             <a onclick="ShowDiv_1('MyDiv1','fade1','${status.index}','${temp.tid}')">修改</a>
                         </td>
                         <td>
-                            <a href="javascript:if(confirm('确认是否删除此角色？')) location='${pageContext.request.contextPath}/servlet/DeleteUser?id=${temp.tid}'"  target="_blank">删除</a>
+                            <a href="javascript:if(confirm('确认是否删除此角色？')) location='${pageContext.request.contextPath}/dorole/deleterole?tid=${temp.tid}'"  target="_blank">删除</a>
                         </td>
                     </tr>
                 </c:forEach>
@@ -94,11 +94,6 @@
     <%@include file="../common/footer.jsp" %>
     <!--End Footer End -->
 </div>
-
-
-
-
-
 <!--Begin 弹出层-加入购物车 Begin-->
 <div id="fade1" class="black_overlay"></div>
 <div id="MyDiv1" class="white_content">
@@ -107,7 +102,7 @@
             <span class="fr" style="margin-top:10px; cursor:pointer;" onclick="CloseDiv_1('MyDiv1','fade1')"><img src="${pageContext.request.contextPath}/images/close.gif" /></span>
         </div>
         <div class="notice_c">
-                <input type="text" id="roleid" value=""/>
+                <input type="hidden" id="roleid" value=""/>
                 <div class="zTreeDemoBackground left">
                     <ul id="treeDemo" class="ztree"></ul>
                     <input id="rpbutton" type="button" value="角色权限修改"/>
@@ -205,19 +200,6 @@
     };
 
     var zNodes =[
-        { id:1, pId:0, name:"can check 1", open:true},
-        { id:11, pId:1, name:"can check 1-1", open:true},
-        { id:111, pId:11, name:"can check 1-1-1"},
-        { id:112, pId:11, name:"can check 1-1-2"},
-        { id:12, pId:1, name:"can check 1-2", open:true},
-        { id:121, pId:12, name:"can check 1-2-1"},
-        { id:122, pId:12, name:"can check 1-2-2"},
-        { id:2, pId:0, name:"can check 2", checked:true, open:true},
-        { id:21, pId:2, name:"can check 2-1"},
-        { id:22, pId:2, name:"can check 2-2", open:true},
-        { id:221, pId:22, name:"can check 2-2-1", checked:true},
-        { id:222, pId:22, name:"can check 2-2-2"},
-        { id:23, pId:2, name:"can check 2-3"}
     ];
 
     var code;

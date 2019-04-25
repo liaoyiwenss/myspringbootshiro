@@ -51,6 +51,19 @@ public class RoleController {
 
     }
 
+    @RequestMapping("addrole")
+    public String addrole(Role role){
+        roleService.insert(role);
+        return "redirect:/dorole/getallrole";
+    }
+
+
+    @RequestMapping("deleterole")
+    public String deleterole(Long tid){
+        roleService.deleteByPrimaryKey(tid);
+        return "redirect:/dorole/getallrole";
+    }
+
 
 
     @RequestMapping("updateRoleandPermisson")
