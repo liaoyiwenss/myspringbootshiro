@@ -12,4 +12,6 @@ public interface ProductcategoryMapper extends BaseMapper<Productcategory> {
 
 
     List<Productcategory> queryProductCategoryListbyParentId(@Param("parentid") Long parentid);
+
+    List<Productcategory> queryProductCategoryList();
 }

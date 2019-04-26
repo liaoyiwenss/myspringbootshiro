@@ -44,7 +44,12 @@
       and  (categorylevel1id=#{pcid}  or  categorylevel2id=#{pcid}  or  categorylevel3id=#{pcid})
     </if>
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <select id="queryListProduct" resultType="net.wanho.pojo.Product">
+    select
+      *
+    from product
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from product
     where tid = #{tid,jdbcType=BIGINT}
   </delete>

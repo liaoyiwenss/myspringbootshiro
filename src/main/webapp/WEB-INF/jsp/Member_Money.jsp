@@ -4,18 +4,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
     <!--[if IE 6]>
-    <script src="js/iepng.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/iepng.js" type="text/javascript"></script>
         <script type="text/javascript">
            EvPNG.fix('div, ul, img, li, input, a'); 
         </script>
     <![endif]-->
         
-    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="js/menu.js"></script>    
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/menu.js"></script>
         
-	<script type="text/javascript" src="js/select.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/select.js"></script>
         
     
 <title>liaoyiwen</title>
@@ -29,7 +29,7 @@
 <div class="i_bg bg_color">
     <!--Begin 用户中心 Begin -->
 	<div class="m_content">
-   		<%@ include file="../prepublicpage/LeftBar.jsp" %>
+   		<%@ include file="prepublicpage/LeftBar.jsp" %>
 		<div class="m_right">
             <div class="mem_tit">商品列表</div>
       <table border="0" class="order_tab" style="width:930px; text-align:center; margin-bottom:30px;" cellspacing="0" cellpadding="0">
@@ -41,45 +41,43 @@
           <td width="10%">价格</td>
           <td width="10%" colspan="2">操作</td>
         </tr>
-        <c:forEach items="${pages.list}" var="temp">
+        <c:forEach items="${pagehelper.list}" var="temp">
           <tr>
             <td>${temp.name}</td>
             <td>
-              <a href=" ${pageContext.request.contextPath}/Product?action=queryProductDeatil&id=${temp.id}" target="_blank">
-                  <img src=" ${pageContext.request.contextPath}/files/${temp.fileName}" width="50" height="50"/>
+              <a href=" ${pageContext.request.contextPath}/Product?action=queryProductDeatil&tid=${temp.tid}" target="_blank">
+                  <img src=" ${pageContext.request.contextPath}/files/${temp.filename}" width="50" height="50"/>
               </a>
             </td>
             <td>${temp.stock}</td>
             <td>${temp.price}</td>
-            <td><a href=" ${pageContext.request.contextPath}/servlet/UpdateProduct?id=${temp.id}">修改</a></td>
-            <td><a href="javascript:if(confirm('确认是否删除此商品？')) location='${pageContext.request.contextPath}/servlet/DeleteProduct?id=${temp.id}'">删除</a></td>
+            <td><a href=" ${pageContext.request.contextPath}/servlet/UpdateProduct?tid=${temp.tid}">修改</a></td>
+            <td><a href="javascript:if(confirm('确认是否删除此商品？')) location='${pageContext.request.contextPath}/servlet/DeleteProduct?id=${temp.tid}'">删除</a></td>
           </tr>
         </c:forEach>
         </tbody>
       </table>
-           
-           
-			
 
-<div class="pages">
-                <c:if test="${pages.currentPageNo>1}">
-				<a href="${pageContext.request.contextPath}/servlet/ProductServlet?flag=${flag}&&currentPage=${pages.currentPageNo-1}" class="p_pre">上一页</a>
-				</c:if>
-				<c:forEach var="i" begin="1" end="${pages.totalPageCount}">
-				 <c:if test="${pages.currentPageNo!=i}">
-				 <a href="${pageContext.request.contextPath}/servlet/ProductServlet?flag=${flag}&&currentPage=${i}" class="cur">
-				${i}</a>
-				</c:if>
-				<c:if test="${pages.currentPageNo==i}">
-				 <a href="javascript:return false;" class="cur">
-				${i}
-				</a>
-				</c:if>
-				</c:forEach>
-				<c:if test="${pages.currentPageNo<pages.totalPageCount}">
-				<a href="${pageContext.request.contextPath}/servlet/ProductServlet?flag=${flag}&&currentPage=${pages.currentPageNo+1}" class="p_pre">下一页</a>
-				</c:if>
- </div>
+
+        <div class="pages" style="text-align:center;">
+            <c:if test="${!pagehelper.isFirstPage}">
+                <a href="${pageContext.request.contextPath}/doproduct/getallproduct?flag=${flag}&&pageno=${pagehelper.firstPage}&&flag=${flag}">首页</a>
+                <a href="${pageContext.request.contextPath}/doproduct/getallproduct?flag=${flag}&&pageno=${pagehelper.prePage}&&flag=${flag}">上一页</a>
+            </c:if>
+            <c:forEach items="${pagehelper.navigatepageNums}" var="navigatepageNum">
+                <c:if test="${navigatepageNum==pagehelper.pageNum}">
+                    <a href="${pageContext.request.contextPath}/doproduct/getallproduct?flag=${flag}&&pageno=${navigatepageNum}&&flag=${flag}">${navigatepageNum}</a>
+                </c:if>
+                <c:if test="${navigatepageNum!=pagehelper.pageNum}">
+                    <a href="${pageContext.request.contextPath}/doproduct/getallproduct?flag=${flag}&&pageno=${navigatepageNum}&&flag=${flag}">${navigatepageNum}</a>
+                </c:if>
+            </c:forEach>
+            <c:if test="${!pagehelper.isLastPage}">
+                <a href="${pageContext.request.contextPath}/doproduct/getallproduct?flag=${flag}&&pageno=${pagehelper.nextPage}&&flag=${flag}">下一页</a>
+                <a href="${pageContext.request.contextPath}/doproduct/getallproduct?flag=${flag}&&pageno=${pagehelper.lastPage}&&flag=${flag}">最后一页</a>
+            </c:if>
+        </div>
+
             
         </div>
     </div>

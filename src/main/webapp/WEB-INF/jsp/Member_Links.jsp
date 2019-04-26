@@ -4,18 +4,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
     <!--[if IE 6]>
-    <script src="js/iepng.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/iepng.js" type="text/javascript"></script>
         <script type="text/javascript">
            EvPNG.fix('div, ul, img, li, input, a'); 
         </script>
     <![endif]-->
         
-    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="js/menu.js"></script>    
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/menu.js"></script>    
         
-	<script type="text/javascript" src="js/select.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/select.js"></script>
         
     
 <title>liaoyiwen</title>
@@ -29,7 +29,7 @@
 <div class="i_bg bg_color">
     <!--Begin 用户中心 Begin -->
 	<div class="m_content">
-   		<%@ include file="../prepublicpage/LeftBar.jsp" %>
+   		<%@ include file="prepublicpage/LeftBar.jsp" %>
 		<div class="m_right">
 		<div class="mem_tit">全部分类信息<input type="button" style="margin-left:600px" id="bt1" value="增加分类" class="btn_tj" /></div>
          
@@ -42,9 +42,9 @@
           <td width="25%">父级分类</td>
           <td width="25%" >操作</td>
         </tr>
-        <c:forEach items="${pages.list}" var="temp">
+        <c:forEach items="${pagehelper.list}" var="temp">
           <tr>
-            <td width="5%"><input type="radio" value="${temp.id}" name="select"/></td>
+            <td width="5%"><input type="radio" value="${temp.tid}" name="select"/></td>
             <td>${temp.name}</td>
             <td>
             <c:choose>
@@ -54,43 +54,42 @@
             </c:choose>
             </td>
             <td>
-            <c:if test="${empty temp.parentName}">
+            <c:if test="${empty temp.parentid}">
             	无
             </c:if>
-            <c:if test="${not empty temp.parentName}">
-            	${temp.parentName}
+            <c:if test="${not empty temp.parentid}">
+            	${temp.parentid}
             </c:if>
             </td>
-            <td><a href="javascript:if(confirm('确认是否删除此分类？')) location='${pageContext.request.contextPath}/servlet/DeleteCategory?id=${temp.id}'" >删除</a></td>
+            <td><a href="javascript:if(confirm('确认是否删除此分类？')) location='${pageContext.request.contextPath}/servlet/DeleteCategory?tid=${temp.tid}'" >删除</a></td>
           </tr>
         </c:forEach>
         </tbody>
       </table>
             
-             <div class="pages">
-                <c:if test="${pages.currentPageNo>1}">
-				<a href="${pageContext.request.contextPath}/servlet/CategoryList?flag=${flag}&&currentPage=${pages.currentPageNo-1}" class="p_pre">上一页</a>
-				</c:if>
-				<c:forEach var="i" begin="1" end="${pages.totalPageCount}">
-				 <c:if test="${pages.currentPageNo!=i}">
-				 <a href="${pageContext.request.contextPath}/servlet/CategoryList?flag=${flag}&&currentPage=${i}" class="cur">
-				${i}</a>
-				</c:if>
-				<c:if test="${pages.currentPageNo==i}">
-				 <a href="javascript:return false;" class="cur">
-				${i}
-				</a>
-				</c:if>
-				</c:forEach>
-				<c:if test="${pages.currentPageNo<pages.totalPageCount}">
-				<a href="${pageContext.request.contextPath}/servlet/CategoryList?flag=${flag}&&currentPage=${pages.currentPageNo+1}" class="p_pre">下一页</a>
-				</c:if>
- </div>
+            <div class="pages" style="text-align:center;">
+                <c:if test="${!pagehelper.isFirstPage}">
+                    <a href="${pageContext.request.contextPath}/doproductcategory/getcategorylist?flag=${flag}&&pageno=${pagehelper.firstPage}&&flag=${flag}">首页</a>
+                    <a href="${pageContext.request.contextPath}/doproductcategory/getcategorylist?flag=${flag}&&pageno=${pagehelper.prePage}&&flag=${flag}">上一页</a>
+                </c:if>
+                <c:forEach items="${pagehelper.navigatepageNums}" var="navigatepageNum">
+                    <c:if test="${navigatepageNum==pagehelper.pageNum}">
+                        <a href="${pageContext.request.contextPath}/doproductcategory/getcategorylist?flag=${flag}&&pageno=${navigatepageNum}&&flag=${flag}">${navigatepageNum}</a>
+                    </c:if>
+                    <c:if test="${navigatepageNum!=pagehelper.pageNum}">
+                        <a href="${pageContext.request.contextPath}/doproductcategory/getcategorylist?flag=${flag}&&pageno=${navigatepageNum}&&flag=${flag}">${navigatepageNum}</a>
+                    </c:if>
+                </c:forEach>
+                <c:if test="${!pagehelper.isLastPage}">
+                    <a href="${pageContext.request.contextPath}/doproductcategory/getcategorylist?flag=${flag}&&pageno=${pagehelper.nextPage}&&flag=${flag}">下一页</a>
+                    <a href="${pageContext.request.contextPath}/doproductcategory/getcategorylist?flag=${flag}&&pageno=${pagehelper.lastPage}&&flag=${flag}">最后一页</a>
+                </c:if>
+            </div>
             
             <div id="addcategory">
             
             
-            <form action="${pageContext.request.contextPath}/servlet/addCategory" method="post">
+            <form action="${pageContext.request.contextPath}/doproductcategory/addcategory" method="post">
              <table  border="0" style="width:880px; margin-top:20px;"  cellspacing="0" cellpadding="0">
              
             <tr height="45">
@@ -113,7 +112,7 @@
 					
 					 <c:forEach items="${pclist}" var="list" varStatus="i">
 					
-					<option id="${list.pc.id}" value="${list.pc.id}">${list.pc.name}</option>
+					<option id="${list.pc.tid}" value="${list.pc.tid}">${list.pc.name}</option>
 					</c:forEach>
 				</select>
                 
@@ -194,13 +193,13 @@ jQuery("#one").change(function(){
 		var id=jQuery(this).find("option:selected").attr("id");
 		 jQuery("#two").html("<option>--请选择--</option>");
 		jQuery.ajax({
-			"url" : "${pageContext.request.contextPath}/servlet/one",
+			"url" : "${pageContext.request.contextPath}/doproductcategory/categorylevel",
 			"type" : "post",
-			"data" : {"id":id},
+			"data" : {"tid":id},
 			"dataType" : "Json",
 			"success" : function(result){
 			jQuery.each(result,function(i,n){
-			jQuery("#two").append("<option id='"+n.id+"'value='"+n.id+"'>"+n.name+"</option>");
+			jQuery("#two").append("<option id='"+n.tid+"'value='"+n.tid+"'>"+n.name+"</option>");
 			})
 			}
 		}) 
@@ -210,13 +209,13 @@ jQuery("#two").change(function(){
 		
 		 jQuery("#three").html("<option>--请选择--</option>");
 		jQuery.ajax({
-			"url" : "${pageContext.request.contextPath}/servlet/one",
+			"url" : "${pageContext.request.contextPath}/doproductcategory/categorylevel",
 			"type" : "post",
-			"data" : {"id":id},
+			"data" : {"tid":id},
 			"dataType" : "Json",
 			"success" : function(result){
 			jQuery.each(result,function(i,n){
-			jQuery("#three").append("<option id='"+n.id+"'value='"+n.id+"'>"+n.name+"</option>");
+			jQuery("#three").append("<option id='"+n.tid+"'value='"+n.tid+"'>"+n.name+"</option>");
 			})
 			}
 		}) 

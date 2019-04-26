@@ -32,4 +32,4 @@ function add(message){
 		ShowDiv_1('MyDiv1','fade1');
 		}
 }
-add(message);
+

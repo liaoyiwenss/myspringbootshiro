@@ -22,7 +22,6 @@ public class ShowController {
     @Autowired
     ProductService productService;
 
-
     @Autowired
     ProductCategoryService productCategoryService;
 
@@ -36,8 +35,6 @@ public class ShowController {
     public String showindex(HttpSession session, HttpServletRequest request, Map map)
     {
         List<ProductCategoryVO> pclist = productCategoryService.getDomList();
-
-
         session.setAttribute("pclist",pclist);
         PageInfo<Product> productPageInfo = productService.selectProductbyEntity(null,null,0, 6, 1);
         PageInfo<Product> productPageInfo1 =productService.selectProductbyEntity(null,null,1,6,1);
@@ -46,7 +43,6 @@ public class ShowController {
         PageInfo<Product> productPageInfo4 =productService.selectProductbyEntity(null,null,4,6,1);
         PageInfo<Product> productPageInfo5 =productService.selectProductbyEntity(null,null,5,6,1);
         PageInfo<Product> productPageInfo6 =productService.selectProductbyEntity(null,null,6,6,1);
-
         map.put("productlist",productPageInfo.getList());
         map.put("productlist1",productPageInfo1.getList());
         map.put("productlist2",productPageInfo2.getList());
@@ -54,24 +50,10 @@ public class ShowController {
         map.put("productlist4",productPageInfo4.getList());
         map.put("productlist5",productPageInfo5.getList());
         map.put("productlist6",productPageInfo6.getList());
-
-        /*session.setAttribute("productlist",productPageInfo.getList());
-        session.setAttribute("productlist1",productPageInfo1.getList());
-        session.setAttribute("productlist2",productPageInfo2.getList());
-        session.setAttribute("productlist3",productPageInfo3.getList());
-        session.setAttribute("productlist4",productPageInfo4.getList());
-        session.setAttribute("productlist5",productPageInfo5.getList());
-        session.setAttribute("productlist6",productPageInfo6.getList());*/
-
         String filepath=request.getContextPath();
         session.setAttribute("filepath", filepath+"/files/");
-
-
-
-
         return "Index";
     }
-
 
     @RequestMapping("Login")
     public String Login()
@@ -94,13 +76,10 @@ public class ShowController {
         return "Product";
     }
 
-
     @RequestMapping("toSettlement")
     public String toSettlement(){
-
         return "/settlement/toSettlement";
     }
-
 
     @RequestMapping("settlement1")
     public String settlement1(){
@@ -145,5 +124,15 @@ public class ShowController {
     @RequestMapping("AddRole")
     public String AddRole(){
         return "/AddRole";
+    }
+
+    @RequestMapping("Member_Links")
+    public String Member_Links(){
+        return "/Member_Links";
+    }
+
+    @RequestMapping("Member_Money")
+    public String Member_Money(){
+        return "/Member_Money";
     }
 }

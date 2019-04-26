@@ -48,4 +48,16 @@ public class ProductController {
         return "redirect:/show/Product";
 
     }
+
+    @RequestMapping("getallproduct")
+    public String getallproduct(Integer pageno,HttpSession session){
+
+        if(pageno==null)
+        {
+            pageno=1;
+        }
+        PageInfo<Product> pagehelper = productService.queryListProduct(pageno, 10,4);
+        session.setAttribute("pagehelper", pagehelper);
+        return "redirect:/show/Member_Money";
+    }
 }

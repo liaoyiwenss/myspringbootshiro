@@ -44,16 +44,6 @@ public class UserController {
 
     @RequestMapping("/tologin")
     public String tologin(String username,String password,HttpSession session){
-
-        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-        Subject subject = SecurityUtils.getSubject();
-        try {
-            subject.login(token);
-        } catch (AuthenticationException e) {
-            e.printStackTrace();
-            return "redirect:/show/Login";
-        }
-
         User user=new User();
         user.setLoginname(username);
         user.setPassword(password);
@@ -68,6 +58,21 @@ public class UserController {
         User currentuser = userService.selectByPrimaryKey(user.getTid());
         session.setAttribute("currentuser",currentuser);
         return "index";
+    }
+
+    @RequestMapping(value = "/toprelogin",produces={"text/html;charset=UTF-8;","application/json;"})
+    @ResponseBody
+    public String toLogin(String username,String password){
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+        Subject subject = SecurityUtils.getSubject();
+        try {
+            subject.login(token);
+            return "true";
+        } catch (AuthenticationException e) {
+            e.printStackTrace();
+            return "用户名密码不正确！！";
+        }
+
     }
 
 

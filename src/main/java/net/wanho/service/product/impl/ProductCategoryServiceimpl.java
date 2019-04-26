@@ -1,5 +1,7 @@
 package net.wanho.service.product.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import net.wanho.mapper.ProductcategoryMapper;
 import net.wanho.pojo.Productcategory;
 import net.wanho.pojo.vo.ProductCategoryVO;
@@ -96,6 +98,19 @@ public class ProductCategoryServiceimpl implements ProductCategoryService {
 
         return oneList;
 
+    }
+
+    @Override
+    public PageInfo<Productcategory> queryProductCategoryList(Integer start,Integer limit,Integer navigatePages) {
+        PageHelper.startPage(start, limit);
+        List<Productcategory> productcategories = productcategoryMapper.queryProductCategoryList();
+        PageInfo<Productcategory> pageinfo=new PageInfo<Productcategory>(productcategories,navigatePages);
+        return pageinfo;
+    }
+
+    @Override
+    public List<Productcategory> queryProductCategoryListbyParentId(Long parentid) {
+        return productcategoryMapper.queryProductCategoryListbyParentId(parentid);
     }
 
 

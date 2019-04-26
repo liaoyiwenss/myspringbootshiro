@@ -13,4 +13,6 @@ public interface ProductMapper extends BaseMapper<Product> {
     public List<Product> selectProductbyEntity(@Param("pcid") Integer pcid,@Param("proname") String proName);
 
     public Product queryProductbtid(Long tid);
+
+    public List<Product> queryListProduct();
 }

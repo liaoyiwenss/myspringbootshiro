@@ -25,6 +25,14 @@ public class ProductServiceimpl implements ProductService {
     }
 
     @Override
+    public PageInfo<Product> queryListProduct(Integer start,Integer limit,Integer navigatePages) {
+        PageHelper.startPage(start, limit);
+        List<Product> products = productMapper.queryListProduct();
+        PageInfo<Product> pageinfo=new PageInfo<Product>(products,navigatePages);
+        return pageinfo;
+    }
+
+    @Override
     public int deleteByPrimaryKey(Long tid) {
         return productMapper.deleteByPrimaryKey(tid);
     }
