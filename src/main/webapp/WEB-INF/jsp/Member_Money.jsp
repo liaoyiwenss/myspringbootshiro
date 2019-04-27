@@ -45,14 +45,14 @@
           <tr>
             <td>${temp.name}</td>
             <td>
-              <a href=" ${pageContext.request.contextPath}/Product?action=queryProductDeatil&tid=${temp.tid}" target="_blank">
+              <a href=" ${pageContext.request.contextPath}/doproduct/product?action=queryProductDeatil&tid=${temp.tid}" target="_blank">
                   <img src=" ${pageContext.request.contextPath}/files/${temp.filename}" width="50" height="50"/>
               </a>
             </td>
             <td>${temp.stock}</td>
             <td>${temp.price}</td>
-            <td><a href=" ${pageContext.request.contextPath}/servlet/UpdateProduct?tid=${temp.tid}">修改</a></td>
-            <td><a href="javascript:if(confirm('确认是否删除此商品？')) location='${pageContext.request.contextPath}/servlet/DeleteProduct?id=${temp.tid}'">删除</a></td>
+            <td><a href=" ${pageContext.request.contextPath}/doproduct/updateProduct?tid=${temp.tid}">修改</a></td>
+            <td><a href="javascript:if(confirm('确认是否删除此商品？')) location='${pageContext.request.contextPath}/doproduct/deleteProduct?tid=${temp.tid}'">删除</a></td>
           </tr>
         </c:forEach>
         </tbody>

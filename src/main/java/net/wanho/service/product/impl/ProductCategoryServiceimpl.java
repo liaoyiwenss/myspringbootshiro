@@ -50,6 +50,25 @@ public class ProductCategoryServiceimpl implements ProductCategoryService {
     }
 
 
+    public List<ProductCategoryVO> getProductCategoryVOList(List<Productcategory> list){
+        List<ProductCategoryVO> oneList=new ArrayList<ProductCategoryVO>();
+        for (int i=0;i<list.size();i++)
+        {
+            ProductCategoryVO v1=new ProductCategoryVO();
+            Productcategory parent1=list.get(i);
+            v1.setPc(parent1);
+            List<Productcategory> list2=productcategoryMapper.queryProductCategoryListbyParentId(parent1.getTid());
+            if(list2!=null)
+            {
+                v1.setPcVOList(getProductCategoryVOList(list2));
+                oneList.add(v1);
+            }else {
+                break;
+            }
+        }
+        return oneList;
+    }
+
     public List<ProductCategoryVO> getDomList(){
 
         List<ProductCategoryVO> oneList=new ArrayList<ProductCategoryVO>();

@@ -61,7 +61,7 @@
             	${temp.parentid}
             </c:if>
             </td>
-            <td><a href="javascript:if(confirm('确认是否删除此分类？')) location='${pageContext.request.contextPath}/servlet/DeleteCategory?tid=${temp.tid}'" >删除</a></td>
+            <td><a href="javascript:if(confirm('确认是否删除此分类？')) location='${pageContext.request.contextPath}/doproductcategory/deletecategory?tid=${temp.tid}'" >删除</a></td>
           </tr>
         </c:forEach>
         </tbody>

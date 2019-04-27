@@ -4,18 +4,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
     <!--[if IE 6]>
-    <script src="js/iepng.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/iepng.js" type="text/javascript"></script>
         <script type="text/javascript">
            EvPNG.fix('div, ul, img, li, input, a'); 
         </script>
     <![endif]-->
         
-    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="js/menu.js"></script>    
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/menu.js"></script>
         
-	<script type="text/javascript" src="js/select.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/select.js"></script>
         
     
 <title>liaoyiwen</title>
@@ -29,11 +29,11 @@
 <div class="i_bg bg_color">
     <!--Begin 用户中心 Begin -->
 	<div class="m_content">
-   		<%@ include file="../prepublicpage/LeftBar.jsp" %>
+   		<%@ include file="prepublicpage/LeftBar.jsp" %>
 		<div class="m_right">
             <p></p>
             <div class="mem_tit">我的留言</div>
-           	<form action="${pageContext.request.contextPath }/servlet/doAddServlet?action=add" method="post"  enctype="multipart/form-data">
+           	<form action="${pageContext.request.contextPath }/doproduct/addProduct?action=add" method="post"  enctype="multipart/form-data">
             <table border="0" style="width:880px; margin-top:20px;"  cellspacing="0" cellpadding="0">
               <tr height="45">
                 <td align="right">一级分类&nbsp; &nbsp;</td>
@@ -43,7 +43,7 @@
 					
 					 <c:forEach items="${pclist}" var="list" varStatus="i">
 					
-					<option id="${list.pc.id}" value="${list.pc.id}">${list.pc.name}</option>
+					<option id="${list.pc.tid}" value="${list.pc.tid}">${list.pc.name}</option>
 					</c:forEach>
 				</select>
                 
@@ -120,13 +120,13 @@ jQuery("#one").change(function(){
 		
 		 jQuery("#two").html("<option>--请选择--</option>");
 		jQuery.ajax({
-			"url" : "${pageContext.request.contextPath}/servlet/one",
+			"url" : "${pageContext.request.contextPath}/doproductcategory/categorylevel",
 			"type" : "post",
-			"data" : {"id":id},
+			"data" : {"tid":id},
 			"dataType" : "Json",
 			"success" : function(result){
 			jQuery.each(result,function(i,n){
-			jQuery("#two").append("<option id='"+n.id+"'value='"+n.id+"'>"+n.name+"</option>");
+			jQuery("#two").append("<option id='"+n.tid+"'value='"+n.tid+"'>"+n.name+"</option>");
 			})
 			}
 		}) 
@@ -137,13 +137,13 @@ jQuery("#two").change(function(){
 		
 		 jQuery("#three").html("<option>--请选择--</option>");
 		jQuery.ajax({
-			"url" : "${pageContext.request.contextPath}/servlet/one",
+			"url" : "${pageContext.request.contextPath}/doproductcategory/categorylevel",
 			"type" : "post",
-			"data" : {"id":id},
+			"data" : {"tid":id},
 			"dataType" : "Json",
 			"success" : function(result){
 			jQuery.each(result,function(i,n){
-			jQuery("#three").append("<option id='"+n.id+"'value='"+n.id+"'>"+n.name+"</option>");
+			jQuery("#three").append("<option id='"+n.tid+"'value='"+n.tid+"'>"+n.name+"</option>");
 			})
 			}
 		}) 

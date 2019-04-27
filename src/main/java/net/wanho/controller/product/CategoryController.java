@@ -17,8 +17,6 @@ import java.util.List;
 @RequestMapping("/doproductcategory")
 public class CategoryController {
 
-
-
     @Autowired
     private ProductCategoryService productCategoryService;
 
@@ -73,6 +71,12 @@ public class CategoryController {
         List<ProductCategoryVO> pclist = productCategoryService.getDomList();
         session.setAttribute("pclist", pclist);
 
+        return "redirect:/doproductcategory/getcategorylist";
+    }
+
+    @RequestMapping("deletecategory")
+    public String deletecategory(Long tid){
+        productCategoryService.deleteByPrimaryKey(tid);
         return "redirect:/doproductcategory/getcategorylist";
     }
 }

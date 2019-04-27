@@ -49,7 +49,7 @@
                 	<c:if test="${users.type==1}">
                     <li><a href="${pageContext.request.contextPath}/doproductcategory/getcategorylist">分类管理</a></li><!-- /page/Member_Links.jsp -->
                     <li><a href="${pageContext.request.contextPath}/doproduct/getallproduct">商品管理</a></li><!-- /page/Member_Links.jsp -->
-                	 <li><a href="${pageContext.request.contextPath}/page/Member_Msg.jsp">商品上架</a></li>
+                	 <li><a href="${pageContext.request.contextPath}/show/Member_Msg">商品上架</a></li>
                 	</c:if>
                 </ul>
             </div>

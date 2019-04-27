@@ -34,8 +34,9 @@ public class ShowController {
     @RequestMapping("/Index")
     public String showindex(HttpSession session, HttpServletRequest request, Map map)
     {
-        List<ProductCategoryVO> pclist = productCategoryService.getDomList();
-        session.setAttribute("pclist",pclist);
+//        List<ProductCategoryVO> pclist = productCategoryService.getDomList();
+        List<ProductCategoryVO> domList = productCategoryService.getDomList();
+        session.setAttribute("pclist",domList);
         PageInfo<Product> productPageInfo = productService.selectProductbyEntity(null,null,0, 6, 1);
         PageInfo<Product> productPageInfo1 =productService.selectProductbyEntity(null,null,1,6,1);
         PageInfo<Product> productPageInfo2 =productService.selectProductbyEntity(null,null,2,6,1);
@@ -134,5 +135,15 @@ public class ShowController {
     @RequestMapping("Member_Money")
     public String Member_Money(){
         return "/Member_Money";
+    }
+
+    @RequestMapping("Member_Msg")
+    public String Member_Msg(){
+        return "/Member_Msg";
+    }
+
+    @RequestMapping("toAddProduct")
+    public String toAddProduct(){
+        return "/toAddProduct";
     }
 }
